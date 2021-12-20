@@ -7,6 +7,9 @@
 		<title>MyView</title>
 	</head>
 	<body>
+		<h1><%out.println("Model(Sub) : Hello World");%></h1>
+		<h1>${ObjectTest}</h1>
+		<h1>${lists}</h1>
 		<c:forEach var="mylist" items="${lists}">
 			<h1>${mylist}</h1>
 		</c:forEach>

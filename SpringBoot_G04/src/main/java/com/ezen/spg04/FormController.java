@@ -30,4 +30,15 @@ public class FormController {
 		model.addAttribute("name", name);
 		return "test2";
 	}
+	
+	@RequestMapping(value="/test3")
+	public String text3(Member member, Model model){
+		// 파라미터와 일치하는 빈을 만들어서 매개변수로 사용할 수 있습니다.
+		// 전달된 파라미터는 매개변수 빈에 자동으로 입력됩니다.
+		// View 페이지에서 model을 사용하지 않고 member 빈을 전달합니다.
+		// member.setId("scott");
+		// member.setName("tiger");
+		// model.addAttribute("member", member);
+		return "test3";
+	}
 }

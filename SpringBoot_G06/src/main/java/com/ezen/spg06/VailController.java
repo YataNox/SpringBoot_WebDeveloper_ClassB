@@ -2,6 +2,7 @@ package com.ezen.spg06;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,7 +14,7 @@ public class VailController {
 	}
 	
 	@RequestMapping(value="/create")
-	public String main(@ModelAttribute("dto") ContentDto contentdto, Model model) {
+	public String main(@ModelAttribute("dto") ContentDto contentdto, Model model, BindingResult result) {
 		// 매개변수에 Dto 객체를 변수로 넣으면 전달되어 지는 파라미터들이 객체내의 동일한 이름의
 		// 멤버변수에 자동 대입됩니다.
 		// writer -> contentdto.writer content -> contentdto.content

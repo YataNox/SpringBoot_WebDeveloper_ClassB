@@ -7,7 +7,7 @@
 		<title>MyView</title>
 	</head>
 	<body>
-		<c:forEach var="mylist", items="${lists}">
+		<c:forEach var="mylist" items="${lists}">
 			<h1>${mylist}</h1>
 		</c:forEach>
 	</body>

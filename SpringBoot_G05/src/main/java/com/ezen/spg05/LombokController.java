@@ -1,9 +1,11 @@
 package com.ezen.spg05;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+@Controller
 public class LombokController {
 	@RequestMapping(value="/")
 	public @ResponseBody String root() throws Exception {

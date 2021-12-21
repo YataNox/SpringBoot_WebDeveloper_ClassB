@@ -37,8 +37,9 @@ public class BbsDao implements IBbsDao{
 	}
 
 	public BbsDto view(String id) {
-		
-		return null;
+		String query = "select * from bbs where id = '" + id  + "'";
+		BbsDto bdto = template.queryForObject(query, new BeanPropertyRowMapper<BbsDto>(BbsDto.class));
+		return bdto;
 	}
 	
 }

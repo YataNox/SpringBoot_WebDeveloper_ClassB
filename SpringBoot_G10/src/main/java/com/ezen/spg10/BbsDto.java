@@ -7,5 +7,5 @@ public class BbsDto {
 	private String id;
 	private String writer;
 	private String title;
-	private String conent;
+	private String content;
 }

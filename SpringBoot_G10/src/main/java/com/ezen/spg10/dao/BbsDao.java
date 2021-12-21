@@ -3,6 +3,7 @@ package com.ezen.spg10.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -15,8 +16,9 @@ public class BbsDao implements IBbsDao{
 	private JdbcTemplate template;
 	
 	public List<BbsDto> list() {
-		
-		return null;
+		String sql = "select * from bbs";
+		List<BbsDto> list = template.query(sql, new BeanPropertyRowMapper<BbsDto>(BbsDto.class));
+		return list;
 	}
 
 	public int write(BbsDto bdto) {

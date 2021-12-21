@@ -26,10 +26,25 @@ public class VailController {
 		
 		// 전달된 파라미터가 비어있거나 널이라면, 그 값을 갖고 원래의 페이지로 돌아가고,
 		// 유효한 데이터라면 DonePage.jsp로 전송됩니다.
-		if(true) {
+		/* if(true) {
 			model.addAttribute("message", "Write를 입력하세요.");
 			return "startPage";
+		} */
+		
+		// ContentValidator : 오류 검출기능을 갖춘 사용자 지정 클래스
+		ContentValidator validator = new ContentValidator();
+		validator.validate(contentdto, result);
+		// BindingResult : 키 값(제목)과 밸류 값(내용)으로 구성된 오류 내용 저장 클래스
+		// validator 메소드는 contentdto와 BindingResult 형태의 레퍼런스 변수를 매개변수로 넣고 시작.
+		// validator의 멤버 메소드인 validate가 contentdto 내용을 검사한 후 result에 오류 내용을 담아주고,
+		// 리턴되지 않아오 call by reference 이기때문에 오류 내용을 현재 위치에서도 result 라는 이름으로
+		// 사용이 가능합니다.
+		
+		if(result.hasErrors()) {
+			model.addAttribute("message", "writer 또는 content를 입력하세요.");
+			return "startPage";
 		}
+		
 		return "DonePage";
 	}
 }

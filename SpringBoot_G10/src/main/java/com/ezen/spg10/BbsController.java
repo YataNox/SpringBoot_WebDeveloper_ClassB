@@ -24,4 +24,15 @@ public class BbsController {
 		model.addAttribute("dto", bdao.view(id));
 		return "view";
 	}
+	
+	@RequestMapping(value="/writeForm")
+	public String writeForm(Model model) {
+		return "writeForm";
+	}
+	
+	@RequestMapping(value="/write")
+	public String write(BbsDto bdto, Model model) {
+		bdao.write(bdto);
+		return "redirect:/";
+	}
 }

@@ -22,8 +22,11 @@ public class BbsDao implements IBbsDao{
 	}
 
 	public int write(BbsDto bdto) {
+		int result = 0;
+		String sql = "insert into bbs values(bbs_seq.nextVal, ?, ?, ?)";
+		result = template.update(sql, bdto.getWriter(), bdto.getTitle(), bdto.getContent());
 		
-		return 0;
+		return result;
 	}
 
 	public int update(BbsDto bdto) {

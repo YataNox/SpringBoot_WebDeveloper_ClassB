@@ -35,8 +35,10 @@ public class BbsDao implements IBbsDao{
 	}
 
 	public int delete(String id) {
+		String sql = "delete from bbs where id = ?";
+		int result = template.update(sql, id);
 		
-		return 0;
+		return result;
 	}
 
 	public BbsDto view(String id) {

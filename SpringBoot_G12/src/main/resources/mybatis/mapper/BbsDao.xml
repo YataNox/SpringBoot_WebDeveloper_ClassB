@@ -12,7 +12,11 @@
 		select * from bbs where id=#{param1}
 	</select>
 	
-	<insert id="write">
+	<!-- <insert id="write">
 		insert into bbs(id, writer, title, content) values(bbs_seq.nextVal, #{param1}, #{param2}, #{param3})
+	</insert> -->
+	
+	<insert id="write" parameterType="com.ezen.spg12.dto.BbsDto">
+		insert into bbs(id, writer, title, content) values(bbs_seq.nextVal, #{writer}, #{title}, #{content})
 	</insert>
 </mapper>

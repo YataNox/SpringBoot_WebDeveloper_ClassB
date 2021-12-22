@@ -14,5 +14,7 @@ public interface IBbsDao {
 
 	public BbsDto view(int id);
 
-	public void write(String writer, String title, String content);
+	// public void write(String writer, String title, String content);
+
+	public void write(BbsDto bbsdto);
 }

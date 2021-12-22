@@ -48,8 +48,8 @@ public class BbsController {
 			
 			return "writeForm";
 		}else {
-			// bdao.write(bbsdto);
-			bdao.write(bbsdto.getWriter(), bbsdto.getTitle(), bbsdto.getContent());
+			bdao.write(bbsdto);
+			// bdao.write(bbsdto.getWriter(), bbsdto.getTitle(), bbsdto.getContent());
 			return "redirect:/";
 		}
 	}

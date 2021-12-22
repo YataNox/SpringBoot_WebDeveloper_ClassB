@@ -19,4 +19,8 @@
 	<insert id="write" parameterType="com.ezen.spg12.dto.BbsDto">
 		insert into bbs(id, writer, title, content) values(bbs_seq.nextVal, #{writer}, #{title}, #{content})
 	</insert>
+	
+	<update id="update" parameterType="com.ezen.spg12.dto.BbsDto">
+		update bbs set writer=#{writer}, title=#{title}, content=#{content} where id=#{id}
+	</update>
 </mapper>

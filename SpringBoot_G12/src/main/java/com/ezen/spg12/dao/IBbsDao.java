@@ -17,4 +17,6 @@ public interface IBbsDao {
 	// public void write(String writer, String title, String content);
 
 	public void write(BbsDto bbsdto);
+
+	public void update(BbsDto bbsdto);
 }

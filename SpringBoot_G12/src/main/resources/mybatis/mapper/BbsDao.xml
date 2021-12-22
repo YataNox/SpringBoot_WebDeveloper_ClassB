@@ -3,6 +3,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="">
+<mapper namespace="com.ezen.spg12.dao.IBbsDao">
+	<select id="list" resultType="com.ezen.spg12.dto.BbsDto">
+		select * from bbs order by id desc
+	</select><!-- 결과가 한 개면 한 개인데로, 여러개이면 리스트에 담아서 반환합니다. -->
+	
 	
 </mapper>

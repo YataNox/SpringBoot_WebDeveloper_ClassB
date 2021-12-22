@@ -20,3 +20,5 @@ select * from transaction3;
 delete from transaction1;
 delete from transaction2;
 delete from transaction3;
+
+drop table transaction1;

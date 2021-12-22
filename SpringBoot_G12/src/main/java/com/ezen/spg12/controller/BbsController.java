@@ -76,4 +76,10 @@ public class BbsController {
 			return "redirect:/";
 		}
 	}
+	
+	@RequestMapping(value="/delete")
+	public String delete(@RequestParam("id") int id, Model model) {
+		bdao.delete(id);
+		return "redirect:/";
+	}
 }

@@ -19,4 +19,6 @@ public interface IBbsDao {
 	public void write(BbsDto bbsdto);
 
 	public void update(BbsDto bbsdto);
+
+	public void delete(int id);
 }

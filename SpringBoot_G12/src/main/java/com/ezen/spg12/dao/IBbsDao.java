@@ -9,4 +9,6 @@ import com.ezen.spg12.dto.BbsDto;
 @Mapper
 public interface IBbsDao {
 	public List<BbsDto> list();
+
+	public BbsDto view(int id);
 }

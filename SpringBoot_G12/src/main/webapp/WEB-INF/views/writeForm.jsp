@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<table width="500" cellpadding="0" cellspacing="0" border="1">
-			<from action="write" method="post">
+			<form action="write" method="post">
 			<tr>
 				<th>번호</th>
 				<td><input type="text" name="writer" size="100" value="${dto.writer}"></td>
@@ -30,7 +30,7 @@
 			<tr>
 				<td colspan="2">${msg}</td>
 			</tr>
-			</from>
+			</form>
 			<br>
 		</table>
 	</body>

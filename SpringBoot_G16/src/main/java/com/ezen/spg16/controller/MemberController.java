@@ -63,4 +63,9 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping(value="/memberJoinForm")
+	public String join_form(Model model, HttpServletRequest request) {
+		return "member/memberJoinForm";
+	}
+	
 }

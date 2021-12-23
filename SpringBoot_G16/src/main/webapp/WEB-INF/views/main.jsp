@@ -43,7 +43,7 @@
 						</td>
 						<td align="center">${board.userid}</td>
 						<td align="center"><fmt:formatDate value="${board.writedate}"/></td>
-						<td align="center">${board.readcount}</td>
+						<td align="center">${board.readcnt}</td>
 					</tr>
 				</c:forEach>
 			</table><br>

@@ -13,14 +13,14 @@
 				<div id="title">로그인</div>
 			</div>
 			<div class="box2">
-				<div id="attr1">아이디</div>
-				<div id="attr2">	&nbsp;&nbsp;
+				<div class="attr1">아이디</div>
+				<div class="attr2">	&nbsp;&nbsp;
 					<input type="text" size="20" name="id" style="width:200px; height: 20px;" value="${dto.id}">
 				</div>
 			</div>
 			<div class="box2">
-				<div id="attr1">비밀번호</div>
-				<div id="attr2">	&nbsp;&nbsp;
+				<div class="attr1">비밀번호</div>
+				<div class="attr2">	&nbsp;&nbsp;
 					<input type="password" size="20" name="pw" style="width:200px; height: 20px;">
 				</div>
 			</div>

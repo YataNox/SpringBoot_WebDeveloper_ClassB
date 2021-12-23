@@ -56,7 +56,7 @@ public class MemberController {
 		}else if(mvo.getPw().equals(membervo.getPw())) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", mvo);
-			return "main";
+			return "redirect:/main";
 		}else {
 			model.addAttribute("message", "알수없는 이유로 로그인 실패.");
 			return "loginForm";

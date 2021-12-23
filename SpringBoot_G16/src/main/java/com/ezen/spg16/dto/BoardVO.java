@@ -20,6 +20,6 @@ public class BoardVO {
 	@NotEmpty(message="내용을 입력하세요.")
 	private String content;
 	private int readcount;
-	private Timestamp wirtedate;
+	private Timestamp writedate;
 	private int replycnt;
 }

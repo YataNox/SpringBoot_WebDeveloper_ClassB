@@ -65,6 +65,13 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping(value="/logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:/";
+	}
+	
 	@RequestMapping(value="/memberJoinForm")
 	public String join_form(Model model, HttpServletRequest request) {
 		return "member/memberJoinForm";

@@ -2,12 +2,18 @@ package com.ezen.spg16.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ezen.spg16.dto.BoardVO;
 import com.ezen.spg16.dto.Paging;
 import com.ezen.spg16.service.BoardService;
 
@@ -47,5 +53,30 @@ public class BoardController {
 			mav.setViewName("main");
 		}
 		return mav;
+	}
+	
+	@RequestMapping(value="/boardWriteForm")
+	public String writeForm(Model model, HttpServletRequest request) {
+		String url = "board/boardWriteForm";
+		HttpSession session = request.getSession();
+		if(session.getAttribute("loginUser")==null)
+			url = "loginForm";
+		return url;
+	}
+	
+	@RequestMapping(value="/boardWrite", method = RequestMethod.POST)
+	public String boardwrite(@ModelAttribute("dto") @Valid BoardVO boardvo,
+			BindingResult result, Model model, HttpServletRequest request) {
+		
+		if(result.getFieldError("") != null) {
+			return "board/boardWriteForm";
+		}else if(result.getFieldError("") != null) {
+			return "board/boardWriteForm";
+		}else if(result.getFieldError("") != null) {
+			return "board/boardWriteForm";
+		}else {
+			// bs.insertBoard(boardvo);
+			return "redirect:/main";
+		}
 	}
 }

@@ -11,4 +11,6 @@ public interface IMemberDao {
 	public MemberVO getMember(String id);
 
 	public void insertMember(MemberVO membervo);
+
+	public void updateMember(MemberVO membervo);
 }

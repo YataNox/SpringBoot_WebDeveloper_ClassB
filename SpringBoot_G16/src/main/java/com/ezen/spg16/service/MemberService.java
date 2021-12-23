@@ -18,7 +18,11 @@ public class MemberService {
 		return mdao.getMember(id);
 	}
 
-	public void insertMember(@Valid MemberVO membervo) {
+	public void insertMember(MemberVO membervo) {
 		mdao.insertMember(membervo);
+	}
+
+	public void updateMember(MemberVO membervo) {
+		mdao.updateMember(membervo);		
 	}
 }

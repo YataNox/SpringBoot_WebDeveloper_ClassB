@@ -144,4 +144,25 @@ public class MemberController {
 		return "member/memberEditForm";
 	}
 	
+	@RequestMapping(value="/memberEdit", method = RequestMethod.POST)
+	public String memberedit(@ModelAttribute("dto") @Valid MemberVO membervo,
+			BindingResult result, @RequestParam("pw_check") String pwchk,
+			Model model, HttpServletRequest request) {
+		
+		if(result.getFieldError("pw") != null) {
+			model.addAttribute("message", "비밀번호를 입력하세요.");
+			return "member/memberEditForm";
+		}else if(result.getFieldError("name") != null) {
+			model.addAttribute("message", "이름을 입력하세요.");
+			return "member/memberEditForm";
+		}else if(!membervo.getPw().equals(pwchk)) {
+			model.addAttribute("message", "비밀번호 확인이 일치하지 않습니다.");
+			return "member/memberEditForm";
+		}else {
+			ms.updateMember(membervo);
+			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", membervo);
+			return "redirect:/main";
+		}
+	}
 }

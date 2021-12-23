@@ -43,8 +43,9 @@
 				</table><br><br>
 				<input type="submit" value="수정">
 				<input type="reset" value="다시 작성">
-				<input type="button" value="목록으로" value="location.href='main'">
-			</form>
+				<input type="button" value="목록으로" onclick="location.href='main'">
+			</form><br><br>
+			${message}
 		</div>
 	</body>
 </html>

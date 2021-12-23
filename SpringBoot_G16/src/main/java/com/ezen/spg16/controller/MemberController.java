@@ -1,6 +1,7 @@
 package com.ezen.spg16.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,24 @@ public class MemberController {
 			}
 		}
 		
-		return "main";
+		MemberVO mvo = ms.getMember(membervo.getId());
+		if(mvo == null) {
+			model.addAttribute("message", "아이디가 없습니다.");
+			return "loginForm";
+		}else if(mvo.getPw() == null) {
+			model.addAttribute("message", "로그인 오류. 관리자에게 문의하세요.");
+			return "loginForm";
+		}else if(!mvo.getPw().equals(membervo.getPw())) {
+			model.addAttribute("message", "비밀번호가 맞지 않습니다.");
+			return "loginForm";
+		}else if(mvo.getPw().equals(membervo.getPw())) {
+			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", mvo);
+			return "main";
+		}else {
+			model.addAttribute("message", "알수없는 이유로 로그인 실패.");
+			return "loginForm";
+		}
 	}
 	
 }

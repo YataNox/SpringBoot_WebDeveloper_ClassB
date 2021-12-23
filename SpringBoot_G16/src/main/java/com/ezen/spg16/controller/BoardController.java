@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ezen.spg16.dto.Paging;
 import com.ezen.spg16.service.BoardService;
 
 @Controller
@@ -22,7 +23,27 @@ public class BoardController {
 		if(session.getAttribute("loginUser") == null)
 			mav.setViewName("loginForm");
 		else {
-			mav.addObject("boardList", bs.selectBoardAll());
+			int page = 1;
+			
+			if(request.getParameter("page") != null) {
+				page = Integer.parseInt(request.getParameter("page"));
+				session.setAttribute("page", page);
+			}else if(session.getAttribute("page") != null) {
+				page = (int) session.getAttribute("page");
+			}else {
+				page = 1;
+				session.removeAttribute("page");
+			}
+			
+			Paging paging = new Paging();
+			paging.setPage(page);
+			
+			int count = bs.getAllCount();
+			paging.setTotalCount(count);
+			paging.Paging();
+			
+			mav.addObject("boardList", bs.selectBoardAll(paging));
+			mav.addObject("paging", paging);
 			mav.setViewName("main");
 		}
 		return mav;

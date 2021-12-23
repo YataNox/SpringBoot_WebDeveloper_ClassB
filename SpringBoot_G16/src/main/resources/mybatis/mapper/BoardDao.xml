@@ -4,7 +4,16 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.ezen.spg16.dao.IBoardDao">
-	<select id="selectBoardAll" resultType="com.ezen.spg16.dto.BoardVO">
-		select * from board order by num desc
+	<select id="selectBoardAll" resultType="com.ezen.spg16.dto.BoardVO"
+	 parameterType="com.ezen.spg16.dto.Paging">
+	 	select * from(
+	 	select * from(
+		select rownum as rn, b.* from((select * from board order by num desc) b) 
+		) where rn &gt;= #{startNum}
+		) where rn &lt;= #{endNum}
+	</select>
+	
+	<select id="getAllCount" resultType="_int">
+		select count(*) from board
 	</select>
 </mapper>

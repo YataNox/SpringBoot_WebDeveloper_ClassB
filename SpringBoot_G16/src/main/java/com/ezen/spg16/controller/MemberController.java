@@ -132,6 +132,15 @@ public class MemberController {
 		if(session.getAttribute("loginUser") == null)
 			return "loginForm";
 		
+		MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+		MemberVO dto = new MemberVO();
+		dto.setId(loginUser.getId());
+		dto.setName(loginUser.getName());
+		dto.setEmail(loginUser.getEmail());
+		dto.setPhone1(loginUser.getPhone1());
+		dto.setPhone2(loginUser.getPhone2());
+		dto.setPhone3(loginUser.getPhone3());
+		model.addAttribute("dto", dto);
 		return "member/memberEditForm";
 	}
 	

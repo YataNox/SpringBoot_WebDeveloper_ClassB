@@ -14,7 +14,7 @@
 				<table>
 					<tr>
 						<th>아이디</th>
-						<td>${loginUser.id} <input type="hidden" name="id" value="${loginUser.id}"></td>
+						<td>${dto.id} <input type="hidden" name="id" value="${dto.id}"></td>
 					</tr>
 					<tr>
 						<th>암호</th>
@@ -26,19 +26,19 @@
 					</tr>
 					<tr>
 						<th>이름</th>
-						<td><input type="text" name="name" value="${loginUser.name}"> *</td>
+						<td><input type="text" name="name" value="${dto.name}"> *</td>
 					</tr>
 					<tr>
 						<th>전화번호</th>
 						<td>
-							<input type="text" size="5" name="phone1" value="${loginUser.phone1}"> -
-							<input type="text" size="7" name="phone2" value="${loginUser.phone2}"> -
-							<input type="text" size="7" name="phone3" value="${loginUser.phone3}">
+							<input type="text" size="5" name="phone1" value="${dto.phone1}"> -
+							<input type="text" size="7" name="phone2" value="${dto.phone2}"> -
+							<input type="text" size="7" name="phone3" value="${dto.phone3}">
 						</td>
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td><input type="text" name="email" size="20" value="${loginUser.email}"></td>
+						<td><input type="text" name="email" size="20" value="${dto.email}"></td>
 					</tr>
 				</table><br><br>
 				<input type="submit" value="수정">

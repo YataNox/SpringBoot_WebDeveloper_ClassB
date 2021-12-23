@@ -126,4 +126,13 @@ public class MemberController {
 		return mav;
 	}
 	
+	@RequestMapping(value="memberEditForm")
+	public String mem_edit_form(Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("loginUser") == null)
+			return "loginForm";
+		
+		return "member/memberEditForm";
+	}
+	
 }

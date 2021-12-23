@@ -1,5 +1,7 @@
 package com.ezen.spg16.service;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class MemberService {
 
 	public MemberVO getMember(String id) {
 		return mdao.getMember(id);
+	}
+
+	public void insertMember(@Valid MemberVO membervo) {
+		mdao.insertMember(membervo);
 	}
 }

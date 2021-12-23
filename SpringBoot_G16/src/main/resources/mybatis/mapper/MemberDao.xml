@@ -7,4 +7,9 @@
 	<select id="getMember" resultType="com.ezen.spg16.dto.MemberVO">
 		select * from spmember where id=#{param1}
 	</select>
+	
+	<insert id="insertMember" parameterType="com.ezen.spg16.dto.MemberVO">
+		insert into spmember(id, pw, name, email, phone1, phone2, phone3)
+		values(#{id},#{pw},#{name},#{email},#{phone1},#{phone2},#{phone3})
+	</insert>
 </mapper>

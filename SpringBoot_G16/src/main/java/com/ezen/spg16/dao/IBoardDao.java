@@ -12,4 +12,6 @@ public interface IBoardDao {
 	public List<BoardVO> selectBoardAll(Paging paging);
 
 	public int getAllCount();
+
+	public int getCount(int num);
 }

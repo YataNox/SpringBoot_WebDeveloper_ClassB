@@ -16,4 +16,8 @@
 	<select id="getAllCount" resultType="_int">
 		select count(*) from board
 	</select>
+	
+	<select id="getCount" resultType="_int">
+		select count(*) from reply where boardnum = #{param1}
+	</select>
 </mapper>

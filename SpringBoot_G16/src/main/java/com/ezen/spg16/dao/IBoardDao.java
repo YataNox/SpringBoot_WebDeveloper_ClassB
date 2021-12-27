@@ -30,4 +30,8 @@ public interface IBoardDao {
 	public void deleteReply(int num);
 
 	public void updateBoard(BoardVO boardvo);
+
+	public void deleteBoard(int num);
+
+	public void deleteReply2(int num);
 }

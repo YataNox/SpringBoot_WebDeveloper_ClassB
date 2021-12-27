@@ -178,6 +178,13 @@ public class BoardController {
 		return "board/boardCheckPassForm";
 	} // board_edit_form end
 	
+	@RequestMapping(value="/boardDeleteForm")
+	public String board_delete_form(Model model, HttpServletRequest request) {
+		String num = request.getParameter("num");
+		model.addAttribute("num", num);
+		return "board/boardCheckPassForm";
+	}
+	
 	@RequestMapping(value="/boardEdit")
 	public String boardEdit(Model model, HttpServletRequest request
 			,@RequestParam("num") int num, @RequestParam("pass") String pass) {
@@ -191,6 +198,13 @@ public class BoardController {
 			return "board/boardCheckPassForm";
 		}
 	} // boardEdit end
+	
+	@RequestMapping(value="/boardDelete")
+	public String boardDelete(Model model, HttpServletRequest request
+			,@RequestParam("num") int num) {
+		bs.deleteBoard(num);
+		return "redirect:/main";
+	}
 	
 	@RequestMapping(value="/boardUpdateForm")
 	public String board_update_form(@RequestParam("num") int num, 

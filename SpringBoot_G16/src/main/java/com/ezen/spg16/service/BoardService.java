@@ -62,10 +62,15 @@ public class BoardService {
 	}
 
 	public void deleteReply(int num) {
-		bdao.deleteReply(num);
+		bdao.deleteReply(num); // num 기준 reply 삭제
 	}
 
 	public void updateBoard(BoardVO boardvo) {
 		bdao.updateBoard(boardvo);
+	}
+
+	public void deleteBoard(int num) {
+		bdao.deleteBoard(num);
+		bdao.deleteReply2(num); // boardnum 기준 reply 삭제
 	}
 }

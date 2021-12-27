@@ -1,5 +1,6 @@
 package com.ezen.spg16.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ import com.ezen.spg16.dto.ReplyVO;
 import com.ezen.spg16.service.BoardService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 @Controller
 public class BoardController {
@@ -202,5 +204,20 @@ public class BoardController {
 	@RequestMapping(value="/selectimg")
 	public String selectimg() {
 		return "board/selectimg";
+	}
+	
+	@RequestMapping(value="/fileupload", method = RequestMethod.POST)
+	public String fileupload(Model model, HttpServletRequest request) {
+		String path = context.getRealPath("/upload");
+		try {
+			MultipartRequest multi = new MultipartRequest(request, path, 5*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
+			
+			// 전송된 파일은 업로드 되고, 파일 이름은 모델에 저장합니다.
+			model.addAttribute("image", multi.getFilesystemName("image"));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		return "board/completeupload";
 	}
 }

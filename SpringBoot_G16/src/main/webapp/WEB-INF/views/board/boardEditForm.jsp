@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>boardEditForm</title>
-		<link rel="stylesheet" type="text/css" href="/css/board.css">
+		<link rel="stylesheet" type="text/css" href="static/css/board.css">
 		<script type="text/javascript">
 			function selectimg(){
 				var opt = "toolbar=no, menubar=no, resizable=no, width=450, height=200";

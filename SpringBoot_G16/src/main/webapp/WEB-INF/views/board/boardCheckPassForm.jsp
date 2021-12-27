@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>boardCheckPassForm</title>
-		<link rel="stylesheet" type="text/css" href="/css/board.css">
+		<link rel="stylesheet" type="text/css" href="static/css/board.css">
 		<script type="text/javascript">
 			function passCheck(){
 				if(document.frm.pass.value.length==0){

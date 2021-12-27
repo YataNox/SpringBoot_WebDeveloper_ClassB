@@ -1,16 +1,18 @@
 package com.ezen.spg16.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +24,6 @@ import com.ezen.spg16.dto.ReplyVO;
 import com.ezen.spg16.service.BoardService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 @Controller
 public class BoardController {
@@ -219,5 +220,25 @@ public class BoardController {
 			e.printStackTrace();
 		}
 		return "board/completeupload";
+	}
+	
+	@RequestMapping(value="/boardUpdate", method = RequestMethod.POST)
+	public String boardUpdate(@ModelAttribute("dto") @Valid BoardVO boardvo, 
+			BindingResult result,@RequestParam("oldfilename") String oldfilename, 
+			HttpServletRequest request, Model model) {
+		
+		if(result.getFieldError("pass") != null) {
+			model.addAttribute("message", "비밀번호는 게시물 수정 삭제시 필요합니다.");
+			return "board/boardEditForm";
+		}else if(result.getFieldError("title") != null) {
+			model.addAttribute("message", "제목은 필수 입력 사항입니다.");
+			return "board/boardEditForm"; 
+		}else if(result.getFieldError("content") != null) {
+			model.addAttribute("message", "게시물 내용은 비워둘 수 없습니다.");
+			return "board/boardEditForm"; 
+		}else {
+			// bs.insertBoard(boardvo);
+			return "redirect:/boardViewWithoutCount?num=" + boardvo.getNum();
+		}
 	}
 }

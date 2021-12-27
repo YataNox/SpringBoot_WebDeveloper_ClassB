@@ -131,4 +131,19 @@ public class BoardController {
 		mav.setViewName("board/boardView");
 		return mav;
 	}
+	
+	@RequestMapping(value="/addReply")
+	public String addReply(@RequestParam("boardnum") int boardnum,
+			@RequestParam("userid") String userid, 
+			@RequestParam("reply") String reply, HttpServletRequest request) {
+	
+		ReplyVO rvo = new ReplyVO();
+		
+		rvo.setUserid(userid);
+		rvo.setContent(reply);
+		rvo.setBoardnum(boardnum);
+		
+		bs.addReply(rvo);
+		return "redirect:/boardViewWithoutCount?num=" + boardnum;
+	}
 }

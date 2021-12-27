@@ -50,4 +50,8 @@ public class BoardService {
 	public ArrayList<ReplyVO> selectReply(int num) {
 		return bdao.selectReply(num);
 	}
+
+	public void addReply(ReplyVO rvo) {
+		bdao.addReply(rvo);
+	}
 }

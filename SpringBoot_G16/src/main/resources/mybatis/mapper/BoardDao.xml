@@ -37,4 +37,9 @@
 	<select id="selectReply" resultType="com.ezen.spg16.dto.ReplyVO">
 		select * from reply where boardnum = #{param1} order by num desc
 	</select>
+	
+	<insert id="addReply" parameterType="com.ezen.spg16.dto.ReplyVO">
+		insert into reply(num, boardnum, userid, content)
+		values(reply_seq.nextVal, #{boardnum}, #{userid}, #{content})
+	</insert>
 </mapper>

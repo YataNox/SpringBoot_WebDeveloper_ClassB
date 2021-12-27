@@ -24,4 +24,6 @@ public interface IBoardDao {
 	public void plusReadCount(int num);
 
 	public ArrayList<ReplyVO> selectReply(int num);
+
+	public void addReply(ReplyVO rvo);
 }

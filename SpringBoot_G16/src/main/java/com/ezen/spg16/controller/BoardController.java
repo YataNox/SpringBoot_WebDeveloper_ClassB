@@ -167,4 +167,11 @@ public class BoardController {
 		bs.deleteReply(num);
 		return "redirect:/boardViewWithoutCount?num=" + boardnum;
 	}
+	
+	@RequestMapping(value="/boardEditForm")
+	public String board_edit_form(Model model, HttpServletRequest request) {
+		String num = request.getParameter("num");
+		model.addAttribute("num", num);
+		return "board/boardCheckPassForm";
+	}
 }

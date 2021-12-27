@@ -34,3 +34,13 @@ function boardCheck(){
 	}
 	return true;
 }
+
+function reply_check(){
+	if(document.frm2.reply.value.length==0){
+		alert("댓글을 입력해주세요.");
+		frm2.reply.focus();
+		return false;
+	}else{
+		return true;
+	}
+}

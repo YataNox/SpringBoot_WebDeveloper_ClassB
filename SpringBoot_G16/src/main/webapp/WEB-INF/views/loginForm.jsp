@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<title>loginForm</title>
 		<link rel="stylesheet" type="text/css" href="/css/board.css">
-		<script type="text/javascript" src="/script/board.js"></script>
+		<script type="text/javascript" src="static/script/board.js"></script>
 	</head>
 	<body>
 		<form action="login" method="post">

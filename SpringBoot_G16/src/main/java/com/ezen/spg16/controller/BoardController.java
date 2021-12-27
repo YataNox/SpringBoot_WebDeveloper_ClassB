@@ -174,4 +174,28 @@ public class BoardController {
 		model.addAttribute("num", num);
 		return "board/boardCheckPassForm";
 	}
+	
+	@RequestMapping(value="/boardEdit")
+	public String boardEdit(Model model, HttpServletRequest request
+			,@RequestParam("num") int num, @RequestParam("pass") String pass) {
+		
+		BoardVO bvo = bs.getBoard(num);
+		model.addAttribute("num", num);
+		if(pass.equals(bvo.getPass())) {
+			return "board/boardCheckPass";
+		}else {
+			model.addAttribute("message", "비밀번호가 맞지 않습니다. 확인해주세요.");
+			return "board/boardCheckPassForm";
+		}
+	}
+	
+	@RequestMapping(value="/boardUpdateForm")
+	public String board_update_form(@RequestParam("num") int num, 
+			Model model, HttpServletRequest request) {
+		BoardVO bvo = bs.getBoard(num);
+		
+		model.addAttribute("board", bvo);
+		model.addAttribute("num", num);
+		return "board/boardEditForm";
+	}
 }

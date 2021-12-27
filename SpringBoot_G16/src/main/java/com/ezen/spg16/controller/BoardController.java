@@ -127,6 +127,7 @@ public class BoardController {
 		mav.addObject("board", bdto);
 		
 		ArrayList<ReplyVO> list = bs.selectReply(num);
+		mav.addObject("replyList", list);
 		
 		mav.setViewName("board/boardView");
 		return mav;

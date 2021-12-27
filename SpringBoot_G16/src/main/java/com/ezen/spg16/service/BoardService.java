@@ -58,4 +58,8 @@ public class BoardService {
 	public void addReply(ReplyVO rvo) {
 		bdao.addReply(rvo);
 	}
+
+	public void deleteReply(int num) {
+		bdao.deleteReply(num);
+	}
 }

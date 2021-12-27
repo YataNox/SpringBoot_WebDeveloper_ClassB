@@ -42,4 +42,8 @@
 		insert into reply(num, boardnum, userid, content)
 		values(reply_seq.nextVal, #{boardnum}, #{userid}, #{content})
 	</insert>
+	
+	<delete id="deleteReply">
+		delete from reply where num=#{param1}
+	</delete>
 </mapper>

@@ -160,4 +160,11 @@ public class BoardController {
 		mav.setViewName("board/boardView");
 		return mav;
 	}
+	
+	@RequestMapping(value="/deleteReply")
+	public String reply_delete(HttpServletRequest request, @RequestParam("num") int num,
+			@RequestParam("boardnum") int boardnum) {
+		bs.deleteReply(num);
+		return "redirect:/boardViewWithCount?num=" + boardnum;
+	}
 }

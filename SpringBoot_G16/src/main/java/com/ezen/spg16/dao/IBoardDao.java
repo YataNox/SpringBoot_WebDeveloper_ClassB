@@ -26,4 +26,6 @@ public interface IBoardDao {
 	public ArrayList<ReplyVO> selectReply(int num);
 
 	public void addReply(ReplyVO rvo);
+
+	public void deleteReply(int num);
 }

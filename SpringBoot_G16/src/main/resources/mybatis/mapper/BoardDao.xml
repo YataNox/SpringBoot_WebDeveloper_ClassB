@@ -46,4 +46,9 @@
 	<delete id="deleteReply">
 		delete from reply where num=#{param1}
 	</delete>
+	
+	<update id="updateBoard" parameterType="com.ezen.spg16.dto.BoardVO">
+		update board set pass=#{pass}, email=#{email}, title=#{title},
+		content=#{content}, imgfilename=#{imgfilename} where num=#{num}
+	</update>
 </mapper>

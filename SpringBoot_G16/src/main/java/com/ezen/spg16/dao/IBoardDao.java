@@ -28,4 +28,6 @@ public interface IBoardDao {
 	public void addReply(ReplyVO rvo);
 
 	public void deleteReply(int num);
+
+	public void updateBoard(BoardVO boardvo);
 }

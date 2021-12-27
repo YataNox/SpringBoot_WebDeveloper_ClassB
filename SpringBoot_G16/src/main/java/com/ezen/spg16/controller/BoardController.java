@@ -149,7 +149,7 @@ public class BoardController {
 		
 		bs.addReply(rvo);
 		return "redirect:/boardViewWithoutCount?num=" + boardnum;
-	}
+	} // addReply end
 	
 	@RequestMapping(value="/boardViewWithoutCount")
 	public ModelAndView boardViewNextUpdate(@RequestParam("num") int num, HttpServletRequest request) {
@@ -162,21 +162,21 @@ public class BoardController {
 		
 		mav.setViewName("board/boardView");
 		return mav;
-	}
+	} // boardViewNextUpdate end
 	
 	@RequestMapping(value="/deleteReply")
 	public String reply_delete(HttpServletRequest request, @RequestParam("num") int num,
 			@RequestParam("boardnum") int boardnum) {
 		bs.deleteReply(num);
 		return "redirect:/boardViewWithoutCount?num=" + boardnum;
-	}
+	} // reply_delete end
 	
 	@RequestMapping(value="/boardEditForm")
 	public String board_edit_form(Model model, HttpServletRequest request) {
 		String num = request.getParameter("num");
 		model.addAttribute("num", num);
 		return "board/boardCheckPassForm";
-	}
+	} // board_edit_form end
 	
 	@RequestMapping(value="/boardEdit")
 	public String boardEdit(Model model, HttpServletRequest request
@@ -190,22 +190,22 @@ public class BoardController {
 			model.addAttribute("message", "비밀번호가 맞지 않습니다. 확인해주세요.");
 			return "board/boardCheckPassForm";
 		}
-	}
+	} // boardEdit end
 	
 	@RequestMapping(value="/boardUpdateForm")
 	public String board_update_form(@RequestParam("num") int num, 
 			Model model, HttpServletRequest request) {
 		BoardVO bvo = bs.getBoard(num);
 		
-		model.addAttribute("board", bvo);
+		model.addAttribute("dto", bvo);
 		model.addAttribute("num", num);
 		return "board/boardEditForm";
-	}
+	} // board_update_form end
 	
 	@RequestMapping(value="/selectimg")
 	public String selectimg() {
 		return "board/selectimg";
-	}
+	} // selectimg end
 	
 	@RequestMapping(value="/fileupload", method = RequestMethod.POST)
 	public String fileupload(Model model, HttpServletRequest request) {
@@ -220,7 +220,7 @@ public class BoardController {
 			e.printStackTrace();
 		}
 		return "board/completeupload";
-	}
+	} // fileupload end
 	
 	@RequestMapping(value="/boardUpdate", method = RequestMethod.POST)
 	public String boardUpdate(@ModelAttribute("dto") @Valid BoardVO boardvo, 
@@ -237,8 +237,15 @@ public class BoardController {
 			model.addAttribute("message", "게시물 내용은 비워둘 수 없습니다.");
 			return "board/boardEditForm"; 
 		}else {
-			// bs.insertBoard(boardvo);
+			if(boardvo.getImgfilename() == null) {
+				if(oldfilename == null)
+					boardvo.setImgfilename("");
+				else 
+					boardvo.setImgfilename(oldfilename);
+			}
+			
+			bs.updateBoard(boardvo);
 			return "redirect:/boardViewWithoutCount?num=" + boardvo.getNum();
 		}
-	}
+	} // boardUpdate end
 }

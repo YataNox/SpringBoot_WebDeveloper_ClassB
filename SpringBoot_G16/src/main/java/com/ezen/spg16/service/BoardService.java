@@ -3,6 +3,8 @@ package com.ezen.spg16.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -61,5 +63,9 @@ public class BoardService {
 
 	public void deleteReply(int num) {
 		bdao.deleteReply(num);
+	}
+
+	public void updateBoard(BoardVO boardvo) {
+		bdao.updateBoard(boardvo);
 	}
 }

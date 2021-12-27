@@ -198,4 +198,9 @@ public class BoardController {
 		model.addAttribute("num", num);
 		return "board/boardEditForm";
 	}
+	
+	@RequestMapping(value="/selectimg")
+	public String selectimg() {
+		return "board/selectimg";
+	}
 }

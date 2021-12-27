@@ -123,7 +123,7 @@ public class BoardController {
 	public ModelAndView boardView(@RequestParam("num") int num, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		
-		BoardVO bdto = bs.getBoard(num);
+		BoardVO bdto = bs.boardView(num);
 		mav.addObject("board", bdto);
 		
 		ArrayList<ReplyVO> list = bs.selectReply(num);
@@ -145,5 +145,18 @@ public class BoardController {
 		
 		bs.addReply(rvo);
 		return "redirect:/boardViewWithoutCount?num=" + boardnum;
+	}
+	
+	@RequestMapping(value="/boardViewWithoutCount")
+	public ModelAndView boardViewNextUpdate(@RequestParam("num") int num, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		BoardVO bdto = bs.getBoard(num);
+		mav.addObject("board", bdto);
+		
+		ArrayList<ReplyVO> list = bs.selectReply(num);
+		mav.addObject("replyList", list);
+		
+		mav.setViewName("board/boardView");
+		return mav;
 	}
 }

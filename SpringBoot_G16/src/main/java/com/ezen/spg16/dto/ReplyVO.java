@@ -9,6 +9,6 @@ public class ReplyVO {
 	private int num;
 	private int boardnum;
 	private String userid;
-	private Timestamp wirtedate;
+	private Timestamp writedate;
 	private String content;
 }

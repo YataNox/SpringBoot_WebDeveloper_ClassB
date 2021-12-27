@@ -42,8 +42,12 @@ public class BoardService {
 		bdao.insertBoard(bdto);
 	}
 
-	public BoardVO getBoard(int num) {
+	public BoardVO boardView(int num) {
 		bdao.plusReadCount(num);
+		return bdao.getBoard(num);
+	}
+	
+	public BoardVO getBoard(int num) {
 		return bdao.getBoard(num);
 	}
 

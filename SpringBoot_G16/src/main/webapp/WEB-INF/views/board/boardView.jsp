@@ -61,7 +61,7 @@
 					</tr>
 					<tr align="center">
 						<td width="100">${loginUser.id}<input type="hidden" name="userid" value="${loginUser.id}"></td>
-						<td width="100"><fmt:formatDate value="${now}" pattern="MM/dd HH:mm"></fmt:formatDate></td>
+						<td width="100"><fmt:formatDate value="${now}" pattern="MM/dd HH:mm"/></td>
 						<td width="670"><input type="text" name="reply" size="85"></td>
 						<td width="100"><input type="submit" value="답글작성" onclick="return reply_check();"></td>
 					</tr>

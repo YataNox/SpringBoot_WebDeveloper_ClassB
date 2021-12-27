@@ -4,6 +4,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>boardCheckPassForm</title>
+		<link rel="stylesheet" type="text/css" href="/css/board.css">
+		<script type="text/javascript">
+			function passCheck(){
+				if(document.frm.pass.value.length==0){
+					alert("비밀번호를 입력하세요.");
+					return false;
+				}
+				return true;
+			}
+		</script>
 	</head>
 	<body>
 		<div align="center">

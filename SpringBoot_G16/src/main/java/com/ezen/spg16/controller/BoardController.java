@@ -1,6 +1,7 @@
 package com.ezen.spg16.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -11,10 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ezen.spg16.dto.BoardVO;
 import com.ezen.spg16.dto.Paging;
+import com.ezen.spg16.dto.ReplyVO;
 import com.ezen.spg16.service.BoardService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -114,5 +117,18 @@ public class BoardController {
 		}
 		
 		return "redirect:/main";
+	}
+	
+	@RequestMapping(value="/boardView")
+	public ModelAndView boardView(@RequestParam("num") int num, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		
+		BoardVO bdto = bs.getBoard(num);
+		mav.addObject("board", bdto);
+		
+		ArrayList<ReplyVO> list = bs.selectReply(num);
+		
+		mav.setViewName("board/boardView");
+		return mav;
 	}
 }

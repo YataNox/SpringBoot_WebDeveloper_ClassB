@@ -1,11 +1,13 @@
 package com.ezen.spg16.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ezen.spg16.dto.BoardVO;
 import com.ezen.spg16.dto.Paging;
+import com.ezen.spg16.dto.ReplyVO;
 
 @Mapper
 public interface IBoardDao {
@@ -16,4 +18,10 @@ public interface IBoardDao {
 	public int getCount(int num);
 
 	public void insertBoard(BoardVO bdto);
+
+	public BoardVO getBoard(int num);
+
+	public void plusReadCount(int num);
+
+	public ArrayList<ReplyVO> selectReply(int num);
 }

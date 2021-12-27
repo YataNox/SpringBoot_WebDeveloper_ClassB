@@ -1,5 +1,6 @@
 package com.ezen.spg16.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 import com.ezen.spg16.dao.IBoardDao;
 import com.ezen.spg16.dto.BoardVO;
 import com.ezen.spg16.dto.Paging;
+import com.ezen.spg16.dto.ReplyVO;
 
 @Service
 public class BoardService {
@@ -38,5 +40,14 @@ public class BoardService {
 
 	public void insertBoard(BoardVO bdto) {
 		bdao.insertBoard(bdto);
+	}
+
+	public BoardVO getBoard(int num) {
+		bdao.plusReadCount(num);
+		return bdao.getBoard(num);
+	}
+
+	public ArrayList<ReplyVO> selectReply(int num) {
+		return bdao.selectReply(num);
 	}
 }

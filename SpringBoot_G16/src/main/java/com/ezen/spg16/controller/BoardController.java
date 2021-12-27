@@ -237,12 +237,8 @@ public class BoardController {
 			model.addAttribute("message", "게시물 내용은 비워둘 수 없습니다.");
 			return "board/boardEditForm"; 
 		}else {
-			if(boardvo.getImgfilename() == null) {
-				if(oldfilename == null)
-					boardvo.setImgfilename("");
-				else 
-					boardvo.setImgfilename(oldfilename);
-			}
+			if(boardvo.getImgfilename().equals(""))
+				boardvo.setImgfilename(oldfilename);
 			
 			bs.updateBoard(boardvo);
 			return "redirect:/boardViewWithoutCount?num=" + boardvo.getNum();

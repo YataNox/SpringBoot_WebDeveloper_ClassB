@@ -6,6 +6,7 @@
 		<title>completeupload</title>
 		<script type="text/javascript">
 			window.opener.frm.imgfilename.value="${image}";
+			window.opener.frm.image.value="${image}";
 			self.close()
 		</script>
 	</head>

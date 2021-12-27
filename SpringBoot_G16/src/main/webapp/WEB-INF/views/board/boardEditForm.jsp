@@ -52,7 +52,8 @@
 								</c:otherwise>
 							</c:choose>
 							<br>
-							<input type="text" name="imgfilename" disabled>
+							<input type="text" name="image" disabled>
+							<input type="hidden" name="imgfilename">
 							<input type="button" value="파일선택" onclick="selectimg();"><br>파일을 수정하고자 할때만 선택하세요.
 							<input type="hidden" name="oldfilename" value="${dto.imgfilename}">
 						</td>

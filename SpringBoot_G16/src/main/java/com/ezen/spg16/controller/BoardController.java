@@ -1,14 +1,14 @@
 package com.ezen.spg16.controller;
 
+import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,11 +16,16 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ezen.spg16.dto.BoardVO;
 import com.ezen.spg16.dto.Paging;
 import com.ezen.spg16.service.BoardService;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @Controller
 public class BoardController {
 	@Autowired
 	BoardService bs;
+	
+	@Autowired
+	ServletContext context;
 	
 	@RequestMapping(value="/main")
 	public ModelAndView main(HttpServletRequest request) {
@@ -64,19 +69,50 @@ public class BoardController {
 		return url;
 	}
 	
-	@RequestMapping(value="/boardWrite", method = RequestMethod.POST)
+	/*@RequestMapping(value="/boardWrite", method = RequestMethod.POST)
 	public String boardwrite(@ModelAttribute("dto") @Valid BoardVO boardvo,
 			BindingResult result, Model model, HttpServletRequest request) {
 		
-		if(result.getFieldError("") != null) {
+		System.out.println("pass : " + boardvo.getPass());
+		System.out.println("pass : " + boardvo.getTitle());
+		System.out.println("pass : " + boardvo.getContent());
+		if(result.getFieldError("pass") != null) {
 			return "board/boardWriteForm";
-		}else if(result.getFieldError("") != null) {
+		}else if(result.getFieldError("title") != null) {
 			return "board/boardWriteForm";
-		}else if(result.getFieldError("") != null) {
+		}else if(result.getFieldError("content") != null) {
 			return "board/boardWriteForm";
 		}else {
 			// bs.insertBoard(boardvo);
 			return "redirect:/main";
 		}
+	}*/
+	
+	@RequestMapping(value="/boardWrite", method = RequestMethod.POST)
+	public String boardwrite(Model model, HttpServletRequest request) {
+		String path = context.getRealPath("/upload");
+		
+		try {
+			MultipartRequest multi = new MultipartRequest(request, path, 5*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
+			
+			BoardVO bdto = new BoardVO();
+			bdto.setPass(multi.getParameter("pass"));
+			bdto.setUserid(multi.getParameter("userid"));
+			bdto.setEmail(multi.getParameter("email"));
+			bdto.setTitle(multi.getParameter("title"));
+			bdto.setContent(multi.getParameter("content"));
+			
+			if(multi.getFilesystemName("image") == null) {
+				bdto.setImgfilename("");
+			}else {
+				bdto.setImgfilename(multi.getFilesystemName("image"));
+			}
+			
+			bs.insertBoard(bdto);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/main";
 	}
 }

@@ -18,3 +18,19 @@ function idok(userid){
 function open_win(url, name){
 	window.open(url, name, "toolbar=no, menubar=no, resizable=no, width=500, height=500")
 } // 게시물 수정 삭제 시 비번 입력창
+
+function boardCheck(){
+	if(document.frm.pass.value==""){
+		document.getElementById("message").innerHTML = "비밀번호는 게시물 수정 삭제시 필요합니다.";
+		return false;
+	}
+	if(document.frm.title.value==""){
+		document.getElementById("message").innerHTML = "제목은 필수입니다.";
+		return false;
+	}
+	if(document.frm.content.value==""){
+		document.getElementById("message").innerHTML = "게시물 내용을 비워둘 수 없습니다.";
+		return false;
+	}
+	return true;
+}

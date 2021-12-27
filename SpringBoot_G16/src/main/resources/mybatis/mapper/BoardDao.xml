@@ -20,4 +20,9 @@
 	<select id="getCount" resultType="_int">
 		select count(*) from reply where boardnum = #{param1}
 	</select>
+	
+	<insert id="insertBoard" parameterType="com.ezen.spg16.dto.BoardVO">
+		insert into board(num, userid, pass, email, title, content, imgfilename) 
+		values(board_seq.nextVal, #{userid}, #{pass}, #{email}, #{title}, #{content}, #{imgfilename})
+	</insert>
 </mapper>

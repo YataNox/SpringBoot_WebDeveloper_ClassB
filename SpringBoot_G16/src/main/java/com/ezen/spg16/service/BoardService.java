@@ -35,4 +35,8 @@ public class BoardService {
 	public int getAllCount() {
 		return bdao.getAllCount();
 	}
+
+	public void insertBoard(BoardVO bdto) {
+		bdao.insertBoard(bdto);
+	}
 }

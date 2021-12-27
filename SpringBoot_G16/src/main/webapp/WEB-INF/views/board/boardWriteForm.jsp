@@ -7,11 +7,12 @@
 		<meta charset="UTF-8">
 		<title>Board Write Form</title>
 		<link rel="stylesheet" type="text/css" href="/css/board.css">
+		<script type="text/javascript" src="/script/board.js"></script>
 	</head>
 	<body>
 		<div id="wrap" align="center">
 			<h1>게시글 등록</h1>
-			<form action="boardWrite" method="post" name="frm">
+			<form action="boardWrite" method="post" name="frm" enctype="multipart/form-data">
 				<table>
 					<tr>
 						<th>작성자</th>
@@ -33,12 +34,16 @@
 						<th>내용</th>
 						<td><textarea cols="70" rows="15" name="content">${dto.content}</textarea></td>
 					</tr>
+					<tr>
+						<th>이미지</th>
+						<td><input type="file" name="image"></td>
+					</tr>
 				</table><br><br>
-				<input type="submit" value="등록">
+				<input type="submit" value="등록" onclick="return boardCheck();">
 				<input type="reset" value="다시 작성">
 				<input type="button" value="목록" onclick="location.href='main'">
 			</form><br>
-			${message}
+			<div id="message"></div>
 		</div>
 	</body>
 </html>

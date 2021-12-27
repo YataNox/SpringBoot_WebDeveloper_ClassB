@@ -14,4 +14,6 @@ public interface IBoardDao {
 	public int getAllCount();
 
 	public int getCount(int num);
+
+	public void insertBoard(BoardVO bdto);
 }

@@ -165,6 +165,6 @@ public class BoardController {
 	public String reply_delete(HttpServletRequest request, @RequestParam("num") int num,
 			@RequestParam("boardnum") int boardnum) {
 		bs.deleteReply(num);
-		return "redirect:/boardViewWithCount?num=" + boardnum;
+		return "redirect:/boardViewWithoutCount?num=" + boardnum;
 	}
 }

@@ -49,6 +49,7 @@
 			<input type="button" value="게시글 삭제" onclick="open_win('boardDeleteForm?num=${board.num}', 'delete')">
 		</div><br><br>
 		
+		<c:set var="now" value="<%=new java.util.Date()%>"></c:set>
 		<div id="wrap" align="center">
 			<form action="addReply" method="post" name="frm2">
 				<input type="hidden" name="boardnum" value="${board.num}">

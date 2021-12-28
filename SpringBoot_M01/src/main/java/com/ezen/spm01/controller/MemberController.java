@@ -98,7 +98,7 @@ public class MemberController {
 	} // idCheckForm End
 	
 	@RequestMapping(value="/findZipNum")
-	public ModelAndView find_zip(@RequestParam("dong") String dong) {
+	public ModelAndView find_zip(@RequestParam(value="dong", required = false) String dong) {
 		ModelAndView mav = new ModelAndView();
 		if(dong != null && dong.trim().equals("") == false) {
 			mav.addObject("addressList", ms.selectAddressByDong(dong));

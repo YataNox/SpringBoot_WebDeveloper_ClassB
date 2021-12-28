@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@ include file="/resources/headerfooter/header.jsp"%>
-<%@ include file="/resources/sub01/sub_image.html"%>
-<%@ include file="/resources/sub01/sub_menu.html"%>
+<%@ include file="../include/headerfooter/header.jsp"%>
+<%@ include file="../include/sub01/sub_image.html"%>
+<%@ include file="../include/sub01/sub_menu.html"%>
 
 <article>
 	<h2>회원 가입 약관</h2>
@@ -341,4 +341,4 @@
 	</form>
 </article>
 
-<%@ include file="/resources/headerfooter/footer.jsp"%>
+<%@ include file="../include/headerfooter/footer.jsp"%>

@@ -58,10 +58,23 @@ public class MemberController {
 		}
 	} // login End
 	
+	// 로그아웃
 	@RequestMapping(value="/logout")
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return "redirect:/";
 	} // logout End
+	
+	// 약관동의 창 이동
+	@RequestMapping(value="/contract")
+	public String contract() {
+		return "member/contract";
+	} // contract End
+	
+	// 회원가입 창 이동
+	@RequestMapping(value="/joinForm")
+	public String joinForm() {
+		return "member/joinForm";
+	} // joinForm End
 }

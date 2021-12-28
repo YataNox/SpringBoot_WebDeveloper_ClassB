@@ -80,6 +80,7 @@ public class MemberController {
 		return "member/joinForm";
 	} // joinForm End
 	
+	// 아이디 중복 체크 창
 	@RequestMapping(value="/idCheckForm")
 	public ModelAndView idCheckForm(@RequestParam("id") String id) {
 		ModelAndView mav = new ModelAndView();
@@ -97,6 +98,7 @@ public class MemberController {
 		return mav;
 	} // idCheckForm End
 	
+	// 주소찾기 창 
 	@RequestMapping(value="/findZipNum")
 	public ModelAndView find_zip(@RequestParam(value="dong", required = false) String dong) {
 		ModelAndView mav = new ModelAndView();
@@ -106,4 +108,44 @@ public class MemberController {
 		mav.setViewName("member/findZipNum");
 		return mav;
 	} // findZipNum End
+	
+	// 회원가입
+	@RequestMapping(value="/join", method = RequestMethod.POST)
+	public String join(@ModelAttribute("dto") @Valid MemberVO membervo,
+			BindingResult result, Model model, HttpServletRequest request,
+			@RequestParam(value="reid", required=false) String reid,
+			@RequestParam(value="pwdCheck", required=false) String pwdCheck) {
+		
+		// 입력란 오류 확인
+		if(result.getFieldError("id") != null) { // id 공백 오류
+			model.addAttribute("message", result.getFieldError("id").getDefaultMessage());
+			model.addAttribute("reid", reid);
+			return "member/joinForm";
+		}else if(result.getFieldError("pwd") != null) { // pwd 공백 오류
+			model.addAttribute("message", result.getFieldError("pwd").getDefaultMessage());
+			model.addAttribute("reid", reid);
+			return "member/joinForm";
+		}else if(result.getFieldError("name") != null) { // 이름 공백 오류
+			model.addAttribute("message", result.getFieldError("name").getDefaultMessage());
+			model.addAttribute("reid", reid);
+			return "member/joinForm";
+		}else if(result.getFieldError("email") != null) { // 이메일 공백 오류
+			model.addAttribute("message", result.getFieldError("email").getDefaultMessage());
+			model.addAttribute("reid", reid);
+			return "member/joinForm";
+		}else if(reid == null || (reid != null && reid.equals(membervo.getId()))) { // id 중복체크 미실시 오류
+			model.addAttribute("message", "아이디 중복체크를 하지 않으셨습니다.");
+			model.addAttribute("reid", reid);
+			return "member/joinForm";
+		}else if(pwdCheck == null || (pwdCheck != null && pwdCheck.equals(membervo.getPwd()))) {
+			// 비밀번호 확인 미일치 오류
+			model.addAttribute("message", "비밀번호 확인이 일치하지 않습니다..");
+			model.addAttribute("reid", reid);
+			return "member/joinForm";
+		}else {
+			membervo.setAddress(request.getParameter("addr1") + " " + request.getParameter("addr2"));
+			// ms.insertMember(membervo);
+			return "member/login";
+		}
+	} // join End
 }

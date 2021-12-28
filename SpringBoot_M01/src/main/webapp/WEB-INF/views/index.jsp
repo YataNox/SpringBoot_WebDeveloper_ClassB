@@ -3,7 +3,7 @@
 
 <!-- 메인 이미지 들어가는 곳 시작 -->
 <div id="main_img">
-	<img src="resources/images/main_img.jpg" style="border-radius: 20px 20px 20px 20px; border:2px solid white;">
+	<img src="/images/main_img.jpg" style="border-radius: 20px 20px 20px 20px; border:2px solid white;">
 </div>
 
 <!-- 신상품 -->
@@ -12,7 +12,7 @@
 	<c:forEach items="${newProductList}" var="productVO">
 		<div id="item">
 			<a href="productDetail?pseq=${productVO.pseq}">
-				<img src="resources/product_images/${productVO.image}">
+				<img src="/product_images/${productVO.image}">
 				<h3>${productVO.name} - <fmt:formatNumber value="${productVO.price2}" type="currency"></fmt:formatNumber></h3>
 			</a>
 		</div>
@@ -25,7 +25,7 @@
 	<c:forEach items="${bestProductList}" var="productVO">
 		<div id="item">
 			<a href="productDetail?pseq=${productVO.pseq}">
-				<img src="resources/product_images/${productVO.image}">
+				<img src="/product_images/${productVO.image}">
 				<h3>${productVO.name} - <fmt:formatNumber value="${productVO.price2}" type="currency"></fmt:formatNumber></h3>
 			</a>
 		</div>

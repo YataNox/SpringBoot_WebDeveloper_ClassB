@@ -4,11 +4,11 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.ezen.spm01.dao.IProductDao">
-	<select id="getNewList" resultType="com.ezen.spm01.dto.ProductVo">
+	<select id="getNewList" resultType="com.ezen.spm01.dto.ProductVO">
 		select * from new_pro_view
 	</select>
 	
-	<select id="getBestList" resultType="com.ezen.spm01.dto.ProductVo">
+	<select id="getBestList" resultType="com.ezen.spm01.dto.ProductVO">
 		select * from best_pro_view
 	</select>
 </mapper>

@@ -116,31 +116,26 @@ public class MemberController {
 			@RequestParam(value="reid", required=false) String reid,
 			@RequestParam(value="pwdCheck", required=false) String pwdCheck) {
 		
+		model.addAttribute("reid", reid);
 		// 입력란 오류 확인
 		if(result.getFieldError("id") != null) { // id 공백 오류
 			model.addAttribute("message", result.getFieldError("id").getDefaultMessage());
-			model.addAttribute("reid", reid);
 			return "member/joinForm";
 		}else if(result.getFieldError("pwd") != null) { // pwd 공백 오류
 			model.addAttribute("message", result.getFieldError("pwd").getDefaultMessage());
-			model.addAttribute("reid", reid);
 			return "member/joinForm";
 		}else if(result.getFieldError("name") != null) { // 이름 공백 오류
 			model.addAttribute("message", result.getFieldError("name").getDefaultMessage());
-			model.addAttribute("reid", reid);
 			return "member/joinForm";
 		}else if(result.getFieldError("email") != null) { // 이메일 공백 오류
 			model.addAttribute("message", result.getFieldError("email").getDefaultMessage());
-			model.addAttribute("reid", reid);
 			return "member/joinForm";
 		}else if(reid == null || (reid != null && reid.equals(membervo.getId()))) { // id 중복체크 미실시 오류
 			model.addAttribute("message", "아이디 중복체크를 하지 않으셨습니다.");
-			model.addAttribute("reid", reid);
 			return "member/joinForm";
 		}else if(pwdCheck == null || (pwdCheck != null && pwdCheck.equals(membervo.getPwd()))) {
 			// 비밀번호 확인 미일치 오류
 			model.addAttribute("message", "비밀번호 확인이 일치하지 않습니다..");
-			model.addAttribute("reid", reid);
 			return "member/joinForm";
 		}else {
 			membervo.setAddress(request.getParameter("addr1") + " " + request.getParameter("addr2"));

@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ezen.spm01.dto.MemberVO;
 import com.ezen.spm01.service.MemberService;
@@ -77,4 +79,31 @@ public class MemberController {
 	public String joinForm() {
 		return "member/joinForm";
 	} // joinForm End
+	
+	@RequestMapping(value="/idCheckForm")
+	public ModelAndView idCheckForm(@RequestParam("id") String id) {
+		ModelAndView mav = new ModelAndView();
+		MemberVO mvo = ms.getMember(id); 
+		int result = 0;
+		
+		if(mvo == null)
+			result = -1;
+		else
+			result = 1;
+		
+		mav.addObject("result", result);
+		mav.addObject("id", id);
+		mav.setViewName("member/idcheck");
+		return mav;
+	} // idCheckForm End
+	
+	@RequestMapping(value="/findZipNum")
+	public ModelAndView find_zip(@RequestParam("dong") String dong) {
+		ModelAndView mav = new ModelAndView();
+		if(dong != null && dong.trim().equals("") == false) {
+			mav.addObject("addressList", ms.selectAddressByDong(dong));
+		}
+		mav.setViewName("member/findZipNum");
+		return mav;
+	} // findZipNum End
 }

@@ -7,4 +7,8 @@
 	<select id="getMember" resultType="com.ezen.spm01.dto.MemberVO">
 		select * from member where id = #{param1}
 	</select>
+	
+	<select id="selectAddressByDong" resultType="com.ezen.spm01.dto.AddressVO">
+		select * from address where dong like '%'||#{param1}||'%'
+	</select>
 </mapper>

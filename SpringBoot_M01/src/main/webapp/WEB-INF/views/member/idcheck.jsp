@@ -5,15 +5,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>IDCheck</title>
-		<link href="resources/css/shopping.css" rel="stylesheet">
-		<script src="resources/script/member.js"></script>
+		<script src="/script/member.js"></script>
 		<style type="text/css">
-			body{background-color: #FDE8FF;}
+			body{background-color: #FDE8FF; font-family: Verdana;}
+			h1{font-family: Verdana; font-size: 45px; color: #CCC; font-weight: normal;}
+			input[type=button], input[type=submit]{float: right;}
 		</style>
 		<script type="text/javascript">
-			function idok(userid){
-				opener.formm.id.value=userid;
-				opener.formm.reid.value=userid;
+			function idok(){
+				opener.formm.id.value="${id}";
+				opener.formm.reid.value="${id}";
 				self.close();
 			}
 		</script>
@@ -32,7 +33,7 @@
 					</c:if>
 					<c:if test="${result == -1}">
 						${id}는 사용 가능한 ID입니다.
-						<input type="button" value="사용" class="cancel" onClick="idok('${id}');">
+						<input type="button" value="사용" class="cancel" onClick="idok();">
 					</c:if>
 				</div>
 			</form>

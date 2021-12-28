@@ -22,7 +22,7 @@ public class ProductController {
 		
 		mav.addObject("newProductList", ps.getNewList());
 		mav.addObject("bestProductList", ps.getBestList());
-		
+		mav.setViewName("index");
 		return mav;
 	}
 }

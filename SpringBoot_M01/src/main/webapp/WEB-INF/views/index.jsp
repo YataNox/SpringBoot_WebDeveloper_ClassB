@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/resources/headerfooter/header.jsp"%>
+<%@ include file="include/headerfooter/header.jsp"%>
 
 <!-- 메인 이미지 들어가는 곳 시작 -->
 <div id="main_img">
@@ -32,4 +32,4 @@
 	</c:forEach>
 </div>
 
-<%@ include file="/resources/headerfooter/footer.jsp"%>
+<%@ include file="include/headerfooter/footer.jsp"%>

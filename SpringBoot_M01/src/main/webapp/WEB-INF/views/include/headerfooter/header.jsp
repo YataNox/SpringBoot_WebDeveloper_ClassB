@@ -6,9 +6,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Main</title>
-		<link href="resources/css/shopping.css" rel="stylesheet">
-		<script src="resources/script/member.js"></script>
-		<script src="resources/script/mypage.js"></script>
+		<link href="/css/shopping.css" rel="stylesheet">
+		<script src="/script/member.js"></script>
+		<script src="/script/mypage.js"></script>
 	</head>
 	<body>
 		<div id="wrap">
@@ -17,7 +17,7 @@
 	
 				<div id="logo">
 					<!-- 메인로고 시작 -->
-					<a href="/shop/"> <img src="resources/images/logo.png" width="180" height="100" />
+					<a href="/"> <img src="/images/logo.png" width="180" height="100" />
 					</a>
 				</div>
 				<!-- 메인로고 끝 -->

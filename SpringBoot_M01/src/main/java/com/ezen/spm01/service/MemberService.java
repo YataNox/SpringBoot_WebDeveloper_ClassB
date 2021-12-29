@@ -2,6 +2,8 @@ package com.ezen.spm01.service;
 
 import java.util.ArrayList;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +22,9 @@ public class MemberService {
 
 	public ArrayList<AddressVO> selectAddressByDong(String dong) {
 		return mdao.selectAddressByDong(dong);
+	}
+
+	public void insertMember(MemberVO membervo) {
+		mdao.insertMember(membervo);
 	}
 }

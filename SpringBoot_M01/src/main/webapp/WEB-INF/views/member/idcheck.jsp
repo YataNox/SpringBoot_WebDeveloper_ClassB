@@ -12,9 +12,9 @@
 			input[type=button], input[type=submit]{float: right;}
 		</style>
 		<script type="text/javascript">
-			function idok(){
-				opener.formm.id.value="${id}";
-				opener.formm.reid.value="${id}";
+			function idok(userid){
+				opener.formm.id.value=userid;
+				opener.formm.reid.value=userid;
 				self.close();
 			}
 		</script>
@@ -33,7 +33,7 @@
 					</c:if>
 					<c:if test="${result == -1}">
 						${id}는 사용 가능한 ID입니다.
-						<input type="button" value="사용" class="cancel" onClick="idok();">
+						<input type="button" value="사용" class="cancel" onClick="idok('${id}');">
 					</c:if>
 				</div>
 			</form>

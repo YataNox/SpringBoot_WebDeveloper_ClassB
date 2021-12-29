@@ -130,16 +130,16 @@ public class MemberController {
 		}else if(result.getFieldError("email") != null) { // 이메일 공백 오류
 			model.addAttribute("message", result.getFieldError("email").getDefaultMessage());
 			return "member/joinForm";
-		}else if(reid == null || (reid != null && reid.equals(membervo.getId()))) { // id 중복체크 미실시 오류
+		}else if(reid == null || (reid != null && !reid.equals(membervo.getId()))) { // id 중복체크 미실시 오류
 			model.addAttribute("message", "아이디 중복체크를 하지 않으셨습니다.");
 			return "member/joinForm";
-		}else if(pwdCheck == null || (pwdCheck != null && pwdCheck.equals(membervo.getPwd()))) {
+		}else if(pwdCheck == null || (pwdCheck != null && !pwdCheck.equals(membervo.getPwd()))) {
 			// 비밀번호 확인 미일치 오류
 			model.addAttribute("message", "비밀번호 확인이 일치하지 않습니다..");
 			return "member/joinForm";
 		}else {
 			membervo.setAddress(request.getParameter("addr1") + " " + request.getParameter("addr2"));
-			// ms.insertMember(membervo);
+			ms.insertMember(membervo);
 			return "member/login";
 		}
 	} // join End

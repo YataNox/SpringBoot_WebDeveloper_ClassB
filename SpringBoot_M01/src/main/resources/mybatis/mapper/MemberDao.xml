@@ -11,4 +11,9 @@
 	<select id="selectAddressByDong" resultType="com.ezen.spm01.dto.AddressVO">
 		select * from address where dong like '%'||#{param1}||'%'
 	</select>
+	
+	<insert id="insertMember" parameterType="com.ezen.spm01.dto.MemberVO">
+		insert into member(id, pwd, name, zip_num, address, email, phone) 
+		values(#{id}, #{pwd}, #{name}, #{zip_num}, #{address}, #{email}, #{phone})
+	</insert>
 </mapper>

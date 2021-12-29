@@ -9,7 +9,9 @@ import com.ezen.spm01.dto.MemberVO;
 
 @Mapper
 public interface IMemberDao {
-	MemberVO getMember(String id);
+	public MemberVO getMember(String id);
 
-	ArrayList<AddressVO> selectAddressByDong(String dong);
+	public ArrayList<AddressVO> selectAddressByDong(String dong);
+
+	public void insertMember(MemberVO membervo);
 }

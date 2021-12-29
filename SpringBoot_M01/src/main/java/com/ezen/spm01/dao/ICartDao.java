@@ -11,4 +11,6 @@ public interface ICartDao {
 	public void insertCart(CartVO cvo);
 
 	public ArrayList<CartVO> listCart(String id);
+
+	public void deleteCart(int cseq);
 }

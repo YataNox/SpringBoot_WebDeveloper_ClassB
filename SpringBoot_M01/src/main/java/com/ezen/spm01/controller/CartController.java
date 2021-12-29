@@ -56,5 +56,12 @@ public class CartController {
 			mav.setViewName("mypage/cartList");
 		}
 		return mav;
-	}
+	} // cartList End
+	
+	@RequestMapping(value="/cartDelete")
+	public String cartDelete(@RequestParam("cseq") int[] cseqArr) {
+		for(int cseq : cseqArr)
+			cs.deleteCart(cseq);
+		return "redirect:/cartList";
+	} // cartDelete End
 }

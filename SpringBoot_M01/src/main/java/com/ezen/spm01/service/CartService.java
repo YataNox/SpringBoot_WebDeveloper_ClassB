@@ -21,4 +21,8 @@ public class CartService {
 	public ArrayList<CartVO> listCart(String id) {
 		return cdao.listCart(id);
 	}
+
+	public void deleteCart(int cseq) {
+		cdao.deleteCart(cseq);
+	}
 }

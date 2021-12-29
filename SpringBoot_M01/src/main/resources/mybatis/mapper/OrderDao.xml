@@ -24,4 +24,8 @@
 	<select id="listOrderByOseq" resultType="com.ezen.spm01.dto.OrderVO">
 		select * from order_view where oseq = #{param1}
 	</select>
+	
+	<select id="selectOseqOrderIng" resultType="int">
+		select distinct oseq from order_view where id=#{param1} and result = '1' order by oseq desc 
+	</select>
 </mapper>

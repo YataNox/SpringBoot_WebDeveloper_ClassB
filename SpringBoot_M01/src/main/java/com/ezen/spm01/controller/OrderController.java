@@ -61,4 +61,31 @@ public class OrderController {
 		
 		return mav;
 	} // orderList End
+	
+	@RequestMapping(value="/mypage")
+	public ModelAndView mypage(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("loginUser");
+		if(mvo == null)
+			mav.setViewName("member/login");
+		else {
+			ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
+			ArrayList<Integer> oseqList = os.selectOseqOrderIng(mvo.getId());
+			for(int oseq : oseqList) {
+				ArrayList<OrderVO> orderListIng = os.listOrderByOseq(oseq);
+				OrderVO ovo = orderListIng.get(0);
+				ovo.setPname(ovo.getPname() + " 포함 " + orderListIng.size() + " 건");
+				int totalPrice = 0;
+				for(OrderVO ovo1 : orderListIng)
+					totalPrice += ovo1.getPrice2() * ovo.getQuantity();
+				ovo.setPrice2(totalPrice);
+				orderList.add(ovo);
+			}
+			mav.addObject("titlt", "진행중인 주문 내역");
+			mav.addObject("orderList", orderList);
+			mav.setViewName("mypage/mypage");
+		}
+		return mav;
+	} // mypage End
 }

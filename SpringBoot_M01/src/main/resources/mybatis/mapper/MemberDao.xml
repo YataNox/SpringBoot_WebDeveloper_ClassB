@@ -16,4 +16,10 @@
 		insert into member(id, pwd, name, zip_num, address, email, phone) 
 		values(#{id}, #{pwd}, #{name}, #{zip_num}, #{address}, #{email}, #{phone})
 	</insert>
+	
+	<update id="updateMember" parameterType="com.ezen.spm01.dto.MemberVO">
+		update member set pwd=#{pwd}, name=#{name}, zip_num=#{zip_num},
+		address=#{address}, email=#{email}, phone=#{phone} 
+		where id=#{id}
+	</update>
 </mapper>

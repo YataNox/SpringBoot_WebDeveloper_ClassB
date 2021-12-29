@@ -14,4 +14,6 @@ public interface IMemberDao {
 	public ArrayList<AddressVO> selectAddressByDong(String dong);
 
 	public void insertMember(MemberVO membervo);
+
+	public void updateMember(MemberVO membervo);
 }

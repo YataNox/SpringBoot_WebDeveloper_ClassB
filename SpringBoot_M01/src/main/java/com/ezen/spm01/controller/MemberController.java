@@ -143,4 +143,55 @@ public class MemberController {
 			return "member/login";
 		}
 	} // join End
+	
+	@RequestMapping(value="/memberEditForm")
+	public ModelAndView memberEditForm(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		ModelAndView mav = new ModelAndView();
+		MemberVO mvo = (MemberVO)session.getAttribute("loginUser");
+		
+		String addr = mvo.getAddress(); // 주소 추출
+		int k1 = addr.indexOf(" ");
+		int k2 = addr.indexOf(" ", k1 + 1);
+		int k3 = addr.indexOf(" ", k2 + 1);
+		
+		String addr1 = addr.substring(0, k3);
+		String addr2 = addr.substring(k3+1);
+		
+		mav.addObject("dto", mvo);
+		mav.addObject("addr1", addr1);
+		mav.addObject("addr2", addr2);
+		mav.setViewName("member/memberUpdateForm");
+		return mav;
+	} // memberEditForm End
+	
+	@RequestMapping(value="/memberUpdate", method = RequestMethod.POST)
+	public String memberUpdate(@ModelAttribute("member") @Valid MemberVO membervo,
+			BindingResult result, Model model, HttpServletRequest request,
+			@RequestParam("pwdCheck") String pwdCheck) {
+		
+		request.setAttribute("addr1", request.getParameter("addr1"));
+		request.setAttribute("addr2", request.getParameter("addr2"));
+		
+		if(result.getFieldError("pwd") != null) { // pwd 공백 오류
+			model.addAttribute("message", result.getFieldError("pwd").getDefaultMessage());
+			return "member/memberUpdateForm";
+		}else if(result.getFieldError("name") != null) { // 이름 공백 오류
+			model.addAttribute("message", result.getFieldError("name").getDefaultMessage());
+			return "member/memberUpdateForm";
+		}else if(result.getFieldError("email") != null) { // 이메일 공백 오류
+			model.addAttribute("message", result.getFieldError("email").getDefaultMessage());
+			return "member/memberUpdateForm";
+		}else if(pwdCheck == null || (pwdCheck != null && !pwdCheck.equals(membervo.getPwd()))) {
+			// 비밀번호 확인 미일치 오류
+			model.addAttribute("message", "비밀번호 확인이 일치하지 않습니다..");
+			return "member/memberUpdateForm";
+		}else {
+			membervo.setAddress(request.getParameter("addr1") + " " + request.getParameter("addr2"));
+			ms.updateMember(membervo);
+			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", membervo);
+			return "redirect:/";
+		}
+	}
 }

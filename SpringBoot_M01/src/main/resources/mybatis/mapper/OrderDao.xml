@@ -4,5 +4,20 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.ezen.spm01.dao.IOrderDao">
+	<insert id="insertOrders">
+		insert into orders(oseq, id) values(orders_seq.nextVal, #{param1})
+	</insert>
 	
+	<select id="LookUpMaxOseq" resultType="_int">
+		select max(oseq) from orders;
+	</select>
+	
+	<insert id="insertOrderDetail">
+		insert into order_detail(odseq, oseq, pseq, quantity,) 
+		values(order_detail.seq.nextVal, #{param2}, #{param1.pseq}, #{param1.quantity})
+	</insert>
+	
+	<delete id="deleteCart">
+		delete from cart where cseq = #{param1}
+	</delete>
 </mapper>

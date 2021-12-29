@@ -28,4 +28,9 @@
 	<select id="selectOseqOrderIng" resultType="int">
 		select distinct oseq from order_view where id=#{param1} and result = '1' order by oseq desc 
 	</select>
+	
+	<select id="oseqListAll" resultType="int">
+		select distinct oseq from (select oseq, id from order_view order by result)
+		where id=#{param1} order by oseq desc 
+	</select>
 </mapper>

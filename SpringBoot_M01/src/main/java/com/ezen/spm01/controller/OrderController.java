@@ -78,7 +78,7 @@ public class OrderController {
 				ovo.setPname(ovo.getPname() + " 포함 " + orderListIng.size() + " 건");
 				int totalPrice = 0;
 				for(OrderVO ovo1 : orderListIng)
-					totalPrice += ovo1.getPrice2() * ovo.getQuantity();
+					totalPrice += ovo1.getPrice2() * ovo1.getQuantity();
 				ovo.setPrice2(totalPrice);
 				orderList.add(ovo);
 			}
@@ -109,5 +109,35 @@ public class OrderController {
 		}
 		
 		return mav;
-	}
+	} // orderDetail End
+	
+	@RequestMapping(value="/orderAll")
+	public ModelAndView orderAll(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session =request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("loginUser");
+		
+		if(mvo == null) {
+			mav.setViewName("member/login");
+		}else {
+			ArrayList<Integer> oseqList = os.oseqListAll(mvo.getId());
+			ArrayList<OrderVO> list = new ArrayList<OrderVO>();
+			
+			for(int oseq : oseqList) {
+				ArrayList<OrderVO> orderListAll = os.listOrderByOseq(oseq);
+				OrderVO ovo = orderListAll.get(0);
+				ovo.setPname(ovo.getPname() + " 포함 " + orderListAll.size() + " 건");
+				int totalPrice = 0;
+				for(OrderVO ovop : orderListAll)
+					totalPrice += ovop.getPrice2() * ovop.getQuantity();
+				ovo.setPrice2(totalPrice);
+				list.add(ovo);
+			}
+			mav.addObject("title", "총 주문 내역");
+			mav.addObject("orderList", list);
+			mav.setViewName("mypage/mypage");
+		}
+		
+		return mav;
+	} // orderAll End
 }

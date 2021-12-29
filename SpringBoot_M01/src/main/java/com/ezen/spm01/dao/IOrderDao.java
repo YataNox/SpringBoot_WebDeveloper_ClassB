@@ -15,4 +15,5 @@ public interface IOrderDao {
 	public void deleteCart(Integer cseq);
 	public ArrayList<OrderVO> listOrderByOseq(int oseq);
 	public ArrayList<Integer> selectOseqOrderIng(String id);
+	public ArrayList<Integer> oseqListAll(String id);
 }

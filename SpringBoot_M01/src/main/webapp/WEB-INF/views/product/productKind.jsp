@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@ include file="/resources/headerfooter/header.jsp"%>
-<%@ include file="/resources/sub02/sub_image.html"%>
-<%@ include file="/resources/sub02/sub_menu.html"%>
+<%@ include file="../include/headerfooter/header.jsp"%>
+<%@ include file="../include/sub02/sub_image.html"%>
+<%@ include file="../include/sub02/sub_menu.html"%>
 
 <article>
 	<h2>Item</h2>
@@ -19,4 +19,4 @@
 	<div class="clear"></div>
 </article>
 
-<%@ include file="/resources/headerfooter/footer.jsp"%>
+<%@ include file="../include/headerfooter/footer.jsp"%>

@@ -21,4 +21,12 @@ public class ProductService {
 		return pdao.getBestList();
 	}
 
+	public ArrayList<ProductVO> getKindList(String kind) {
+		return pdao.getKindList(kind);
+	}
+
+	public ProductVO getProduct(int pseq) {
+		return pdao.getProduct(pseq);
+	}
+
 }

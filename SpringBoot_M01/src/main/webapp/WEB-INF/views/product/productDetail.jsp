@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@ include file="/resources/headerfooter/header.jsp"%>
-<%@ include file="/resources/sub02/sub_image.html"%>
-<%@ include file="/resources/sub02/sub_menu.html"%>
+<%@ include file="../include/headerfooter/header.jsp"%>
+<%@ include file="../include/sub02/sub_image.html"%>
+<%@ include file="../include/sub02/sub_menu.html"%>
 
 <article>
 	<div id="itemdetail" style="float:left;">
@@ -13,7 +13,7 @@
 			<fieldset>
 				<legend>Item Detail Info</legend>
 				<span style="float: left;">
-					<img src="resources/product_images/${productVO.image}" style="border-radius: 20px;">
+					<img src="/product_images/${productVO.image}" style="border-radius: 20px;">
 				</span>
 				<h2>${productVO.name}</h2>
 				<label>가 격 : </label><p>${productVO.price2}</p>
@@ -31,4 +31,4 @@
 	</div>
 </article>
 
-<%@ include file="/resources/headerfooter/footer.jsp"%>
+<%@ include file="../include/headerfooter/footer.jsp"%>

@@ -8,6 +8,8 @@ import com.ezen.spm01.dto.ProductVO;
 
 @Mapper
 public interface IProductDao {
-	ArrayList<ProductVO> getNewList();
-	ArrayList<ProductVO> getBestList();
+	public ArrayList<ProductVO> getNewList();
+	public ArrayList<ProductVO> getBestList();
+	public ArrayList<ProductVO> getKindList(String kind);
+	public ProductVO getProduct(int pseq);
 }

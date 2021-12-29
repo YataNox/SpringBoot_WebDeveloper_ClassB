@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@ include file="/resources/headerfooter/header.jsp"%>
-<%@ include file="/resources/sub04/sub_image.html"%>
-<%@ include file="/resources/sub04/sub_menu.jsp"%>
+<%@ include file="../include/headerfooter/header.jsp"%>
+<%@ include file="../include/sub04/sub_image.html"%>
+<%@ include file="../include/sub04/sub_menu.jsp"%>
 <article>
 	<h2>1:1 고객 게시판</h2>
 	<h3>고객님의 질문에 대해서 운영자가 1:1 답변을 드립니다.</h3>
@@ -16,15 +16,15 @@
 				<th>등록일</th>
 				<th>답변 여부</th>
 			</tr>
-			<c:forEach items="${qnaList}" var="qnaVO">
+			<c:forEach items="${dto}" var="dto">
 				<tr>
-					<td>${qnaVO.qseq}</td>
-					<td><a href="qnaView?qseq=${qnaVO.qseq}">${qnaVO.subject}</td>
-					<td><fmt:formatDate value="${qnaVO.indate}" type="date" /></td>
+					<td>${dto.qseq}</td>
+					<td><a href="qnaView?qseq=${dto.qseq}">${dto.subject}</td>
+					<td><fmt:formatDate value="${dto.indate}" type="date" /></td>
 					<td>
 						<c:choose>
-							<c:when test="${qnaVO.rep==1}"> no </c:when>
-							<c:when test="${qnaVO.rep==2}"> yes </c:when>
+							<c:when test="${dto.rep==1}"> no </c:when>
+							<c:when test="${dto.rep==2}"> yes </c:when>
 						</c:choose>
 					</td>
 				</tr>
@@ -35,8 +35,8 @@
 			<input type="button" value="1:1 질문하기" class="submit"
 				onClick="location.href='qnaWriteForm'"> 
 			<input type="button" value="쇼핑 계속하기" class="cancel"
-				onclick="location.href='/shop/'">
+				onclick="location.href='/'">
 		</div>
 	</form>
 </article>
-<%@ include file="/resources/headerfooter/footer.jsp"%>
+<%@ include file="../include/headerfooter/footer.jsp"%>

@@ -193,5 +193,5 @@ public class MemberController {
 			session.setAttribute("loginUser", membervo);
 			return "redirect:/";
 		}
-	}
+	} // memberUpdate End
 }

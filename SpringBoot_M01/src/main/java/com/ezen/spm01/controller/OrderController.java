@@ -62,7 +62,7 @@ public class OrderController {
 		return mav;
 	} // orderList End
 	
-	@RequestMapping(value="/mypage")
+	@RequestMapping(value="/myPage")
 	public ModelAndView mypage(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -87,5 +87,5 @@ public class OrderController {
 			mav.setViewName("mypage/mypage");
 		}
 		return mav;
-	} // mypage End
+	} // myPage End
 }

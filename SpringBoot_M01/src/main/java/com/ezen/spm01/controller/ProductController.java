@@ -40,5 +40,5 @@ public class ProductController {
 		mav.addObject("productVO", ps.getProduct(pseq));
 		mav.setViewName("product/productDetail");
 		return mav;
-	}
+	} // productDetail End
 }

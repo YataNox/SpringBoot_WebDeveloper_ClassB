@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@ include file="/resources/headerfooter/header.jsp"%>
-<%@ include file="/resources/sub03/sub_image.html"%>
-<%@ include file="/resources/sub03/sub_menu.jsp"%>
+<%@ include file="../include/headerfooter/header.jsp"%>
+<%@ include file="../include/sub03/sub_image.html"%>
+<%@ include file="../include/sub03/sub_menu.jsp"%>
 
 <article>
 	<h2>Cart List</h2>
@@ -56,7 +56,7 @@
 			</c:otherwise>
 		</c:choose>
 		<div id="buttons" style="float: right">
-			<input type="button" value="계속 쇼핑" class="cancel" onclick="location.href='/shop/'">
+			<input type="button" value="계속 쇼핑" class="cancel" onclick="location.href='/'">
 			<c:if test="${cartList.size() != 0}">
 				<input type="button" value="주문하기" class="submit" onClick="go_order_insert();">
 			</c:if>
@@ -64,4 +64,4 @@
 	</form>
 </article>
 
-<%@ include file="/resources/headerfooter/footer.jsp"%>
+<%@ include file="../include/headerfooter/footer.jsp"%>

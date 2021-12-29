@@ -14,7 +14,7 @@
 	
 	<insert id="insertOrderDetail">
 		insert into order_detail(odseq, oseq, pseq, quantity,) 
-		values(order_detail.seq.nextVal, #{param2}, #{param1.pseq}, #{param1.quantity})
+		values(order_detail_seq.nextVal, #{param2}, #{param1.pseq}, #{param1.quantity})
 	</insert>
 	
 	<delete id="deleteCart">

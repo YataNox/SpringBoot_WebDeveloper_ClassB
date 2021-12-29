@@ -9,7 +9,7 @@
 	</insert>
 	
 	<select id="LookUpMaxOseq" resultType="_int">
-		select max(oseq) from orders;
+		select max(oseq) from orders
 	</select>
 	
 	<insert id="insertOrderDetail">
@@ -22,6 +22,6 @@
 	</delete>
 	
 	<select id="listOrderByOseq" resultType="com.ezen.spm01.dto.OrderVO">
-		select * from order_detail where oseq = #{param1}
+		select * from order_view where oseq = #{param1}
 	</select>
 </mapper>

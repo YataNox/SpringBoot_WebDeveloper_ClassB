@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@ include file="/resources/headerfooter/header.jsp"%>
-<%@ include file="/resources/sub03/sub_image.html"%>
-<%@ include file="/resources/sub03/sub_menu.jsp"%>
+<%@ include file="../include/headerfooter/header.jsp"%>
+<%@ include file="../include/sub03/sub_image.html"%>
+<%@ include file="../include/sub03/sub_menu.jsp"%>
 <article>
 	<h2>My Page(주문 상세 정보)</h2>
 	<h3>주문자 정보</h3>
@@ -50,7 +50,7 @@
 	</table>
 	<div class="clear"></div>
 	<div id="buttons" style="float: right">
-		<input type="button" value="쇼핑 계속하기" class="cancel" onclick="location.href='/shop/'">
+		<input type="button" value="쇼핑 계속하기" class="cancel" onclick="location.href='/'">
 	</div>
 </article>
-<%@ include file="/resources/headerfooter/footer.jsp"%>
+<%@ include file="../include/headerfooter/footer.jsp"%>

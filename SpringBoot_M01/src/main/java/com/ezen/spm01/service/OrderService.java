@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ezen.spm01.dao.IOrderDao;
 import com.ezen.spm01.dto.CartVO;
+import com.ezen.spm01.dto.OrderVO;
 
 @Service
 public class OrderService {
@@ -26,5 +27,9 @@ public class OrderService {
 		}
 		// 주문번호를 리턴합니다.
 		return oseq;
+	}
+
+	public ArrayList<OrderVO> listOrderByOseq(int oseq) {
+		return odao.listOrderByOseq(oseq);
 	}
 }

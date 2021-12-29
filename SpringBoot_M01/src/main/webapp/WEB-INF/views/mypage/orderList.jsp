@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@ include file="/resources/headerfooter/header.jsp"%>
-<%@ include file="/resources/sub03/sub_image.html"%>
-<%@ include file="/resources/sub03/sub_menu.jsp"%>
+<%@ include file="../include/headerfooter/header.jsp"%>
+<%@ include file="../include/sub03/sub_image.html"%>
+<%@ include file="../include/sub03/sub_menu.jsp"%>
 
 <article>
 	<h2>Order List</h2>
@@ -38,9 +38,9 @@
 	<div class="clear"></div>
 	<form>
 		<div id="buttons" style="float: right">
-			<input type="button" value="쇼핑 계속하기" class="cancel" onclick="location.href='/shop/'">
+			<input type="button" value="쇼핑 계속하기" class="cancel" onclick="location.href='/'">
 		</div>
 	</form>
 </article>
 
-<%@ include file="/resources/headerfooter/footer.jsp"%>
+<%@ include file="../include/headerfooter/footer.jsp"%>

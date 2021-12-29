@@ -20,4 +20,8 @@
 	<delete id="deleteCart">
 		delete from cart where cseq = #{param1}
 	</delete>
+	
+	<select id="listOrderByOseq" resultType="com.ezen.spm01.dto.OrderVO">
+		select * from order_detail where oseq = #{param1}
+	</select>
 </mapper>

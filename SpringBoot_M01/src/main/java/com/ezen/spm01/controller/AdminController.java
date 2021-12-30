@@ -89,7 +89,7 @@ public class AdminController {
 			String key = "";
 			if(request.getParameter("first") != null && request.getParameter("first").equals("y")) {
 				key = "";
-				session.removeAttribute("page");
+				session.removeAttribute("key");
 			}
 			else if(request.getParameter("key") != null) {
 				key = request.getParameter("key");

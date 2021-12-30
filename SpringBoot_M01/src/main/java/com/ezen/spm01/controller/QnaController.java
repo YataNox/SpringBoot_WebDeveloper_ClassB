@@ -1,7 +1,5 @@
 package com.ezen.spm01.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -10,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ezen.spm01.dto.MemberVO;
@@ -31,7 +30,7 @@ public class QnaController {
 		if(mvo == null) {
 			mav.setViewName("member/login");
 		}else {
-			mav.addObject("dto", qs.listQna(mvo.getId()));
+			mav.addObject("qnaList", qs.listQna(mvo.getId()));
 			mav.setViewName("qna/qnaList");
 		}
 		return mav;
@@ -48,8 +47,8 @@ public class QnaController {
 		}
 	} // qnaWriteForm End
 	
-	@RequestMapping(value="/qnaWrite")
-	public ModelAndView qnaWrite(@RequestAttribute("dto") @Valid QnaVO qnavo,
+	@RequestMapping(value="/qnaWrite", method = RequestMethod.POST)
+	public ModelAndView qnaWrite(@ModelAttribute("dto") @Valid QnaVO qnavo,
 			BindingResult result, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		if(result.getFieldError("subject") != null) {
@@ -68,8 +67,8 @@ public class QnaController {
 		}else {
 			qnavo.setId(mvo.getId());
 			qs.insertQna(qnavo);
-			mav.setViewName("redirect:/qnaList");
 		}
+		mav.setViewName("redirect:/qnaList");
 		return mav;
 	} // qnaWrite End
 }

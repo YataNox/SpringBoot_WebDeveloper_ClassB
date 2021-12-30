@@ -11,9 +11,9 @@
 	<form name="formm" method="post" action="qnaWrite">
 		<fieldset>
 			<legend>Board Info</legend>
-			<label>Title</label><input type="text" name="subject" size="60"><br>
+			<label>Title</label><input type="text" name="subject" size="60" value="${dto.subject}"><br>
 			<label>Content</label>
-			<textarea rows="8" cols="65" name="content"></textarea>
+			<textarea rows="8" cols="65" name="content">${dto.content}</textarea>
 		</fieldset>
 		<div class="clear"></div>
 		<div id="buttons" style="float: right">

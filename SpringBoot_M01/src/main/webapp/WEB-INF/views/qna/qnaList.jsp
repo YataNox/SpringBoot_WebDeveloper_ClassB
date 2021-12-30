@@ -16,15 +16,15 @@
 				<th>등록일</th>
 				<th>답변 여부</th>
 			</tr>
-			<c:forEach items="${dto}" var="dto">
+			<c:forEach items="${qnaList}" var="qnaVO">
 				<tr>
-					<td>${dto.qseq}</td>
-					<td><a href="qnaView?qseq=${dto.qseq}">${dto.subject}</td>
-					<td><fmt:formatDate value="${dto.indate}" type="date" /></td>
+					<td>${qnaVO.qseq}</td>
+					<td><a href="qnaView?qseq=${qnaVO.qseq}">${qnaVO.subject}</td>
+					<td><fmt:formatDate value="${qnaVO.indate}" type="date" /></td>
 					<td>
 						<c:choose>
-							<c:when test="${dto.rep==1}"> no </c:when>
-							<c:when test="${dto.rep==2}"> yes </c:when>
+							<c:when test="${qnaVO.rep==1}"> no </c:when>
+							<c:when test="${qnaVO.rep==2}"> yes </c:when>
 						</c:choose>
 					</td>
 				</tr>

@@ -25,4 +25,10 @@
 		values(product_seq.nextVal, #{name}, #{kind}, #{price1},
 		#{price2}, #{price3}, #{content}, #{image})
 	</insert>
+	
+	<update id="updateProduct" parameterType="com.ezen.spm01.dto.ProductVO">
+		update product set name = #{name}, kind = #{kind}, price1=#{price1},
+		price2=#{price2}, price3=#{price3}, content=#{content}, image=#{image},
+		useyn=#{useyn}, bestyn=#{bestyn} where pseq = #{pseq}	
+	</update>
 </mapper>

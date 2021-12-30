@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -171,6 +174,74 @@ public class AdminController {
 		as.insertProduct(pvo);
 			
 		mav.setViewName("redirect:/productList");
+		return mav;
+	}
+	
+	@RequestMapping(value="/adminProductDetail")
+	public ModelAndView adminProductDetail(HttpServletRequest request,
+			@RequestParam("pseq") int pseq) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("workId");
+		if(id == null)
+			mav.setViewName("redirect:/");
+		else {
+			String kindList[] = {"Heels", "Boots", "Sandals", "Slipers", "Shckers", "Sale"};
+			ProductVO pvo = ps.getProduct(pseq);
+			int index = Integer.parseInt(pvo.getKind());
+			mav.addObject("productVO", pvo);
+			mav.addObject("kind", kindList[index-1]);
+			mav.setViewName("admin/product/productDetail");
+		}
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/productUpdateForm")
+	public ModelAndView productUpdateForm(HttpServletRequest request, @RequestParam("pseq") int pseq) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("workId");
+		if(id == null)
+			mav.setViewName("redirect:/");
+		else {
+			String kindList[] = {"Heels", "Boots", "Sandals", "Slipers", "Shckers", "Sale"};
+			ProductVO pvo = ps.getProduct(pseq);
+			mav.addObject("productVO", pvo);
+			mav.addObject("kindList", kindList);
+			mav.setViewName("admin/product/productUpdate");
+		}
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/productUpdate", method = RequestMethod.POST)
+	public ModelAndView productUpdate(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		ProductVO pvo = new ProductVO();
+		int pseq = Integer.parseInt(request.getParameter("pseq"));
+		pvo.setPseq(pseq);
+		pvo.setKind(request.getParameter("kind"));
+		pvo.setName(request.getParameter("name"));
+		pvo.setContent(request.getParameter("content"));
+		pvo.setImage(request.getParameter("imgfilename"));
+		if(request.getParameter("useyn") == null) {
+			pvo.setUseyn("n");
+		}else {
+			pvo.setUseyn(request.getParameter("useyn"));
+		}
+		if(request.getParameter("bestyn") == null) {
+			pvo.setBestyn("n");
+		}else {
+			pvo.setBestyn(request.getParameter("bestyn"));
+		}
+		pvo.setPrice1(Integer.parseInt(request.getParameter("price1")));
+		pvo.setPrice2(Integer.parseInt(request.getParameter("price2")));
+		pvo.setPrice3(Integer.parseInt(request.getParameter("price3")));
+		as.updateProduct(pvo);
+		
+		mav.addObject("pseq", pseq);
+		mav.setViewName("redirect:/adminProductDetail");
 		return mav;
 	}
 }

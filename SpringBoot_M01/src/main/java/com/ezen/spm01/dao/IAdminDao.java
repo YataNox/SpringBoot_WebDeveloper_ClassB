@@ -17,4 +17,6 @@ public interface IAdminDao {
 	public int getAllCount(String tablename, String fieldname, String key);
 
 	public void insertProduct(ProductVO pvo);
+
+	public void updateProduct(ProductVO pvo);
 }

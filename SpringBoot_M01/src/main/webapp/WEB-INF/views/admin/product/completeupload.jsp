@@ -7,6 +7,7 @@
 		<script type="text/javascript">
 			window.opener.frm.imgfilename.value="${image}";
 			window.opener.frm.image.value="${image}";
+			window.opener.document.getElementById("updateimage").src="/upload/${image}";
 			self.close()
 		</script>
 	</head>

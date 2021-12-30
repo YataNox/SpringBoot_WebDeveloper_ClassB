@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/resources/admin/header.jsp" %>
-<%@ include file="/resources/admin/sub_menu.jsp"%>
+<%@ include file="../../include/adminheaderfooter/header.jsp" %>
+<%@ include file="../../include/sub05/sub_menu.jsp"%>
 
 <article>
 	<h1>상품 수정${productVO.kind}</h1>
-	<form name="frm" method="post" enctype="multipart/form-data">
+	<form name="frm" method="post">
 		<input type="hidden" name="pseq" value="${productVO.pseq}">
 		<input type="hidden" name="code">
 		<input type="hidden" name="oldImage" value="${productVO.image}">
@@ -84,8 +84,10 @@
 			<tr>
 				<th>상품이미지</th>
 				<td colspan="5">
-					<img src="resources/product_images/${productVO.image}" width="200px"><br>
-					<input type="file" name="image">
+					<img src="/product_images/${productVO.image}" width="80" id="updateimage"><br>
+					<input type="text" name="image" value="${productVO.image}" disabled>
+					<input type="hidden" name="imgfilename" value="${productVO.image}">
+					<input type="button" value="파일선택" onclick="selectimg();">
 				</td>
 			</tr>
 		</table>
@@ -95,4 +97,4 @@
 	</form>
 </article>
 
-<%@ include file="/resources/admin/footer.jsp"%>
+<%@ include file="../../include/adminheaderfooter/footer.jsp"%>

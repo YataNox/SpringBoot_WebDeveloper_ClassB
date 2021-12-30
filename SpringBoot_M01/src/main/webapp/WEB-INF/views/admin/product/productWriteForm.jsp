@@ -41,6 +41,7 @@
 			<tr>
 				<th>상품이미지</th>
 				<td colspan="5" width="343">
+					<img alt="사진을 등록해주세요." width="80" id="updateimage"><br>
 					<input type="text" name="image" disabled>
 					<input type="hidden" name="imgfilename">
 					<input type="button" value="파일선택" onclick="selectimg();">

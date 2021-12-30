@@ -1,5 +1,6 @@
 package com.ezen.spm01.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,6 +20,8 @@ import com.ezen.spm01.dto.ProductVO;
 import com.ezen.spm01.service.AdminService;
 import com.ezen.spm01.service.ProductService;
 import com.ezen.spm01.service.QnaService;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @Controller
 public class AdminController {
@@ -115,6 +119,58 @@ public class AdminController {
 			mav.addObject("productList", productList);
 			mav.setViewName("admin/product/productList");
 		}
+		return mav;
+	}
+	
+	@RequestMapping(value="/productWriteForm")
+	public ModelAndView productWriteForm(HttpServletRequest request) {
+		String kindList[] = {"Heels", "Boots", "Sandals", "Slipers", "Shckers", "Sale"};
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("workId");
+		if(id == null)
+			mav.setViewName("redirect:/");
+		else {
+			mav.addObject("kindList", kindList);
+			mav.setViewName("admin/product/productWriteForm");
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value="/selectimg")
+	public String selectimg() {
+		return "admin/product/selectimg";
+	}
+	
+	@RequestMapping(value="/fileupload", method = RequestMethod.POST)
+	public String fileupload(Model model, HttpServletRequest request) {
+		String path = context.getRealPath("/upload");
+		try {
+			MultipartRequest multi = new MultipartRequest(request, path, 5*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
+			
+			// 전송된 파일은 업로드 되고, 파일 이름은 모델에 저장합니다.
+			model.addAttribute("image", multi.getFilesystemName("image"));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		return "admin/product/completeupload";
+	}
+	
+	@RequestMapping(value="/productWrite")
+	public ModelAndView productWrite(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		ProductVO pvo = new ProductVO();
+		pvo.setKind(request.getParameter("kind"));
+		pvo.setName(request.getParameter("name"));
+		pvo.setContent(request.getParameter("content"));
+		pvo.setImage(request.getParameter("imgfilename"));
+		pvo.setPrice1(Integer.parseInt(request.getParameter("price1")));
+		pvo.setPrice2(Integer.parseInt(request.getParameter("price2")));
+		pvo.setPrice3(Integer.parseInt(request.getParameter("price3")));
+		as.insertProduct(pvo);
+			
+		mav.setViewName("redirect:/productList");
 		return mav;
 	}
 }

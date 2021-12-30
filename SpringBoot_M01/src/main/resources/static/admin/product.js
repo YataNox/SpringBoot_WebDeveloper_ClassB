@@ -167,3 +167,8 @@ function go_total_member(){
 	document.frm.action = "memberList?page=1";
 	document.frm.submit();
 }
+
+function selectimg(){
+	var opt = "toolbar=no, menubar=no, resizable=no, width=450, height=200";
+	window.open('selectimg', 'selectimg', opt);
+}

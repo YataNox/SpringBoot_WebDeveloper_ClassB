@@ -19,4 +19,10 @@
 	<select id="getAllCount" resultType="_int">
 		select count(*) as count from ${param1} where ${param2} like '%'||#{param3}||'%'
 	</select>
+	
+	<insert id="insertProduct" parameterType="com.ezen.spm01.dto.ProductVO">
+		insert into product(pseq, name, kind, price1, price2, price3, content, image)
+		values(product_seq.nextVal, #{name}, #{kind}, #{price1},
+		#{price2}, #{price3}, #{content}, #{image})
+	</insert>
 </mapper>

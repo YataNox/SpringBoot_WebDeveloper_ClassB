@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/resources/admin/header.jsp" %>
-<%@ include file="/resources/admin/sub_menu.jsp"%>
+<%@ include file="../../include/adminheaderfooter/header.jsp" %>
+<%@ include file="../../include/sub05/sub_menu.jsp"%>
 
 <article>
-	<form name="frm" method="post" enctype="multipart/form-data">
+	<form name="frm" method="post">
 		<table id="list">
 			<tr>
 				<th>상품분류</th>
@@ -41,7 +41,9 @@
 			<tr>
 				<th>상품이미지</th>
 				<td colspan="5" width="343">
-					<input type="file" name="image">
+					<input type="text" name="image" disabled>
+					<input type="hidden" name="imgfilename">
+					<input type="button" value="파일선택" onclick="selectimg();">
 				</td>
 			</tr>
 		</table>
@@ -50,4 +52,4 @@
 	</form>
 </article>
 
-<%@ include file="/resources/admin/footer.jsp"%>
+<%@ include file="../../include/adminheaderfooter/footer.jsp"%>

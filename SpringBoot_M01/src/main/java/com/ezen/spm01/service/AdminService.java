@@ -38,4 +38,8 @@ public class AdminService {
 		int result = adao.getAllCount(tablename, fieldname, key);
 		return result;
 	}
+
+	public void insertProduct(ProductVO pvo) {
+		adao.insertProduct(pvo);
+	}
 }

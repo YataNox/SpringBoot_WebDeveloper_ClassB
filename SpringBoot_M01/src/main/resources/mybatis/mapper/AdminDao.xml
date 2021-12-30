@@ -4,5 +4,19 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.ezen.spm01.dao.IAdminDao">
+	<select id="workerCheck" resultType="com.ezen.spm01.dto.AdminVO">
+		select * from worker where id = #{param1}
+	</select>
 	
+	<select id="listProduct" resultType="com.ezen.spm01.dto.ProductVO" parameterType="com.ezen.spm01.dto.Paging">
+		select * from(
+			select * from(
+				select rownum as rn, p.* from ((select * from product where name like '%'||#{param2}||'%' order by pseq desc) p)
+			) where rn &gt;= #{paging.startNum}
+		) where rn &lt;= #{paging.endNum}
+	</select>
+	
+	<select id="getAllCount" resultType="_int">
+		select count(*) as count from ${param1} where ${param2} like '%'||#{param3}||'%'
+	</select>
 </mapper>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="/resources/admin/header.jsp" %>
-<%@ include file="/resources/admin/sub_menu.jsp"%>
+<%@ include file="../../include/adminheaderfooter/header.jsp" %>
+<%@ include file="../../include/sub05/sub_menu.jsp"%>
 
 <article>
 	<h1>상품리스트</h1>
@@ -42,7 +42,7 @@
 		</c:forEach>
 	</table><br>
 	
-	<jsp:include page="/resources/paging/paging.jsp">
+	<jsp:include page="../../paging/paging.jsp">
 		<jsp:param name="page" value="${paging.page}"/>
 		<jsp:param name="beginPage" value="${paging.beginPage}"/>
 		<jsp:param name="endPage" value="${paging.endPage}"/>
@@ -53,4 +53,4 @@
 	
 </article>
 
-<%@ include file="/resources/admin/footer.jsp"%>
+<%@ include file="../../include/adminheaderfooter/footer.jsp"%>

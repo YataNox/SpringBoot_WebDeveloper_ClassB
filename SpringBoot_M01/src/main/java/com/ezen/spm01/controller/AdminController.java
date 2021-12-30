@@ -157,7 +157,7 @@ public class AdminController {
 		return "admin/product/completeupload";
 	}
 	
-	@RequestMapping(value="/productWrite")
+	@RequestMapping(value="/productWrite", method = RequestMethod.POST)
 	public ModelAndView productWrite(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		ProductVO pvo = new ProductVO();

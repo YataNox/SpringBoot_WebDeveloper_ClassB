@@ -5,17 +5,17 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
-		<link rel="stylesheet" type="text/css" href="resources/admin/admin.css">
-		<script src="resources/admin/admin.js"></script>
+		<title>Admin Login Form</title>
+		<link rel="stylesheet" type="text/css" href="/admin/admin.css">
+		<script src="/admin/admin.js"></script>
 	</head>
 	<body>
 	
 		<div id="wrap">
 			<header>
 				<div id="logo">
-					<a href="admin"><img src="resources/admin/bar_01.gif"
-						style="float: left;"> <img src="resources/admin/text.gif"></a>
+					<a href="admin"><img src="/admin/bar_01.gif"
+						style="float: left;"> <img src="/admin/text.gif"></a>
 				</div>
 			</header>
 			<div class="clear"></div>

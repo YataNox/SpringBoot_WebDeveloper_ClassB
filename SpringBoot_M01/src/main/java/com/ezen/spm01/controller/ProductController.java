@@ -16,7 +16,7 @@ public class ProductController {
 	@Autowired
 	ProductService ps;
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public ModelAndView index(Model model) {
 		ModelAndView mav = new ModelAndView();
 		
